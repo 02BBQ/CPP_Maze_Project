@@ -1,0 +1,6 @@
+#include "Core.h"
+#include "define.h"
+
+int main() {
+	return 0;
+}
