@@ -1,5 +1,6 @@
 #include "MapManager.h"
 
+MapManager* MapManager::m_pInst = nullptr;
 
 MapManager::MapManager()
 {

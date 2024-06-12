@@ -12,11 +12,21 @@ enum class OBJ_TYPE
 
 class MapManager
 {
+private:
+	MapManager();
+public:
+	static MapManager* GetInst() {
+		if (m_pInst == nullptr)
+			m_pInst = new MapManager;
+		return m_pInst;
+	}
+private:
+	static MapManager* m_pInst;
+
 public:
 	char arrMap[MAP_WIDTH][MAP_HEIGHT] = {};
 
 public:
-	MapManager();
 	void Init(std::string const MAP_FILE);
 };
 
