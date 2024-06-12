@@ -3,6 +3,7 @@
 
 #include "mci.h"
 #include "console.h"
+#include "define.h"
 
 class MK_GameLogic
 {

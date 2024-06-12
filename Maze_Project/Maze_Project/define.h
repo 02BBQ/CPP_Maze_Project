@@ -4,6 +4,7 @@
 #include<fstream>
 #include"Player.h";
 #include"console.h"
+#include"MapManager.h"
 using std::cout;
 using std::wcout;
 using std::endl;
