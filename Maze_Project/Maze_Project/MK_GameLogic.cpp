@@ -1,6 +1,13 @@
 #include "MK_GameLogic.h"
 #include "MapManager.h"
 
+MK_GameLogic* MK_GameLogic::m_pInst = nullptr;
+
+MK_GameLogic::MK_GameLogic()
+{
+
+}
+
 void MK_GameLogic::Init()
 {
 	system("title 21Maze | mode con cols=80 lines=40");
