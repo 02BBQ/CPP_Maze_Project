@@ -130,6 +130,7 @@
     <ClCompile Include="console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="mci.cpp" />
     <ClCompile Include="MK_Scene.cpp" />
     <ClCompile Include="MK_GameLogic.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="MK_Scene.h" />
     <ClInclude Include="MK_GameLogic.h" />
   </ItemGroup>
