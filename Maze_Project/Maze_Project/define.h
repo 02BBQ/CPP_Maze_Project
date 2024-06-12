@@ -1,5 +1,9 @@
 #pragma once
 #include<iostream>
+#include<algorithm>
+#include<fstream>
+#include"Player.h";
+#include"console.h"
 using std::cout;
 using std::wcout;
 using std::endl;
