@@ -1,6 +1,5 @@
 #pragma once
-#include <fstream>
-#include <iostream>
+#include "define.h"
 
 const int MAP_WIDTH = 20;
 const int MAP_HEIGHT = 21;
@@ -14,14 +13,13 @@ class MapManager
 {
 private:
 	MapManager();
+	static MapManager* m_pInst;
 public:
 	static MapManager* GetInst() {
 		if (m_pInst == nullptr)
 			m_pInst = new MapManager;
 		return m_pInst;
 	}
-private:
-	static MapManager* m_pInst;
 
 public:
 	char arrMap[MAP_WIDTH][MAP_HEIGHT] = {};
