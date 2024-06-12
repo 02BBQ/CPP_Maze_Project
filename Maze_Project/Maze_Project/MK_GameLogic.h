@@ -4,9 +4,6 @@
 #include "mci.h"
 #include "console.h"
 
-const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 20;
-
 class MK_GameLogic
 {
 public:
