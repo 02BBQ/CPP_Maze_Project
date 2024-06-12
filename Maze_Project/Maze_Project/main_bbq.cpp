@@ -2,7 +2,6 @@
 #include "define.h"
 #include "console.h"
 #include "MK_GameLogic.h"
-
 void Update();
 void Render();
 
