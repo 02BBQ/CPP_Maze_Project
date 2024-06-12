@@ -1,8 +1,8 @@
 #pragma once
 #include "define.h"
 
-const int MAP_WIDTH = 20;
-const int MAP_HEIGHT = 21;
+const int MAP_WIDTH = 21;
+const int MAP_HEIGHT = 20;
 
 enum class OBJ_TYPE
 {
