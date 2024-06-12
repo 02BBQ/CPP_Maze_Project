@@ -5,25 +5,42 @@ void Player::Move()
 	//this->tNewPos = this->tNewPos + Dir
 	tNewPos = tPos;
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		--tNewPos.y;
+		tNewPos = Raycast(tPos, {0, -1});
 	}
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-		++tNewPos.y;
+		tNewPos = Raycast(tPos, {0, 1});
 	}
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-		--tNewPos.x;
+		tNewPos = Raycast(tPos, {-1, 0});
 	}
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-		++tNewPos.x;
+		tNewPos = Raycast(tPos, {1, 0});
 	}
 
 	tNewPos.x = std::clamp(tNewPos.x, 0, MAP_WIDTH - 2);
 	tNewPos.y = std::clamp(tNewPos.y, 0, MAP_HEIGHT - 2);
 
-	tPos =tNewPos;
+	/*tPos =tNewPos;
 	cout << tPos.x << "\n";
-	cout << tPos.y;
+	cout << tPos.y;*/
 
 	tPos = tNewPos;
 	Sleep(100);
 }
+
+FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
+{
+	FLOAT2 newPos = origin;
+	int maxTries = 100;
+	int tries = 0;
+	while (tries < maxTries) {
+		newPos = { newPos.x + dir.x , newPos.y + dir.y };
+		if (MapManager::GetInst()->arrMap[newPos.x][newPos.y] == (char)OBJ_TYPE::WALL) {
+			return { newPos.x - dir.x, newPos.x - dir.y };
+		}
+		++tries;
+	}
+	return origin;
+}
+
+

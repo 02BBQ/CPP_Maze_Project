@@ -13,5 +13,6 @@ public:
 		this->tNewPos = this->tPos;
 	}
 	void Move();
+	FLOAT2 Raycast(FLOAT2 origin, FLOAT2 dir);
 };
 
