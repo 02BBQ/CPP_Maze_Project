@@ -13,9 +13,4 @@ typedef struct _tagpos
 			return false;
 	}
 
-	FLOAT2 operator +(const _tagpos& _other) const
-	{
-		return _tagpos{ x + _other.x, y + _other.y };
-	}
-
 }FLOAT2, *PFLOAT2;

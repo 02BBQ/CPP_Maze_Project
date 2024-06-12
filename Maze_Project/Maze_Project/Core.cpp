@@ -1,9 +1,13 @@
 #include "Core.h"
 Core* Core::m_pInst = nullptr;
 
+Core::Core()
+{
+}
 bool Core::Init()
 {
-	return false;
+	player = new Player();
+	return true;
 }
 
 void Core::Run()
