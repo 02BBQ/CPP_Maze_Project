@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "define.h"
 #include "console.h"
+#include "MK_GameLogic.h"
 
 void Update();
 void Render();
@@ -11,6 +12,7 @@ int main() {
 		Core::DestroyInst();
 		return 0;
 	}
+	GET_SINGLE(MK_GameLogic)->Init();
 	while (true)
 	{
 		Update();
@@ -27,5 +29,20 @@ void Update() {
 }
 void Render() 
 {
-	
+	Player* plr = GET_SINGLE(Core)->player;
+	auto arrMap = GET_SINGLE(MapManager)->arrMap;
+	for (int i = 0; i < MAP_HEIGHT; ++i) {
+		for (int j = 0; j < MAP_WIDTH; ++j) {
+			if (plr->tPos.x == j && plr->tPos.y == i)
+				cout << "¢½";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
+				cout << "¡á";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
+				cout << "  ";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
+				cout << "¤Ç";
+			SetColor((int)COLOR::WHITE);
+		}
+		cout << "\n";
+	}
 }

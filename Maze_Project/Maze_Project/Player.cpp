@@ -35,8 +35,9 @@ FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
 	int tries = 0;
 	while (tries < maxTries) {
 		newPos = { newPos.x + dir.x , newPos.y + dir.y };
-		if (MapManager::GetInst()->arrMap[newPos.x][newPos.y] == (char)OBJ_TYPE::WALL) {
-			return { newPos.x - dir.x, newPos.x - dir.y };
+		if (MapManager::GetInst()->arrMap[newPos.y][newPos.x] == (char)OBJ_TYPE::WALL) {
+			newPos = { newPos.x - dir.x, newPos.y - dir.y };
+			return newPos;
 		}
 		++tries;
 	}
