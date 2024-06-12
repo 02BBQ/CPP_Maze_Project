@@ -22,6 +22,7 @@ bool Core::Init()
 	}
 
 	readMap.close();*/
+	
 	return true;
 }
 
@@ -43,4 +44,6 @@ void Core::Update()
 
 void Core::Render()
 {
+	// 나중에 수정
+	
 }

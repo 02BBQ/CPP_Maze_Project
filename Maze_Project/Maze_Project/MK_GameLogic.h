@@ -8,6 +8,8 @@
 
 class MK_GameLogic
 {
+private:
+	MK_GameLogic();
 public:
 	void Init();
 };
