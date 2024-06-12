@@ -8,18 +8,19 @@ void MK_GameLogic::Init()
 	LockResize();
 	SetFontSize(FW_BOLD, 20, 20);
 	// 100 - 10% / 1000 - 100%
+	 
 
 	//Loding Map
 	GET_SINGLE(MapManager);
-	MapManager::GetInst()->Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
+	MapManager::GetInst()->Init("stage.txt");
 	
+	// Player Start Pos Settings
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::START)
-				*_pStartPos = { j,i };
+				Core::GetInst()->player->tPos = { j,i };
 		}
 	}
-	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };
 }

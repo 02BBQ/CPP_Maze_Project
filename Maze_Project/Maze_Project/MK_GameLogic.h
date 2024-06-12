@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 
+#include "Core.h"
 #include "mci.h"
 #include "console.h"
 #include "define.h"
