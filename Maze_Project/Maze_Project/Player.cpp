@@ -16,6 +16,10 @@ void Player::Move()
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
 		++tNewPos.x;
 	}
+
+	tNewPos.x = std::clamp(tNewPos.x, 0, MAP_WIDTH - 2);
+	tNewPos.y = std::clamp(tNewPos.y, 0, MAP_HEIGHT - 2);
+
 	tPos =tNewPos;
 	cout << tPos.x << "\n";
 	cout << tPos.y;
