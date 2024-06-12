@@ -1,7 +1,7 @@
 #include "MK_GameLogic.h"
 #include "MapManager.h"
 
-void MK_GameLogic::Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH])
+void MK_GameLogic::Init()
 {
 	system("title 21Bombman | mode con cols=80 lines=40");
 	SetCursorVis(false, 1);
@@ -11,15 +11,15 @@ void MK_GameLogic::Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH])
 
 	//Loding Map
 	GET_SINGLE(MapManager);
-	/*mapManager.Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
+	MapManager::GetInst()->Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
 	
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			if (_arrMap[i][j] == (char)OBJ_TYPE::START)
+			if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::START)
 				*_pStartPos = { j,i };
 		}
 	}
-	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };*/
+	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };
 }

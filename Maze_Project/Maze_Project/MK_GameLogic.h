@@ -7,6 +7,6 @@
 class MK_GameLogic
 {
 public:
-	void Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH]);
+	void Init();
 };
 
