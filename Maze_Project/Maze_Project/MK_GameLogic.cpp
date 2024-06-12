@@ -10,8 +10,8 @@ void MK_GameLogic::Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH])
 	// 100 - 10% / 1000 - 100%
 
 	//Loding Map
-	MapManager mapManager;
-	mapManager.Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
+	GET_SINGLE(MapManager);
+	/*mapManager.Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
 	
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
@@ -21,5 +21,5 @@ void MK_GameLogic::Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH])
 				*_pStartPos = { j,i };
 		}
 	}
-	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };
+	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };*/
 }
