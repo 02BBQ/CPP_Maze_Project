@@ -25,7 +25,6 @@ int main() {
 void Update() {
 	Core::GetInst()->player->Move();
 }
-void Render() 
-{
-	
+void Render() {
+
 }

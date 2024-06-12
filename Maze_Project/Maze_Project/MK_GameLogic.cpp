@@ -1,25 +1,25 @@
 #include "MK_GameLogic.h"
 #include "MapManager.h"
 
-void MK_GameLogic::Init(char _arrMap[MAP_HEIGHT][MAP_WIDTH])
+void MK_GameLogic::Init()
 {
-	system("title 21Bombman | mode con cols=80 lines=40");
+	system("title 21Maze | mode con cols=80 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
 	SetFontSize(FW_BOLD, 20, 20);
 	// 100 - 10% / 1000 - 100%
+	 
 
 	//Loding Map
-	GET_SINGLE(MapManager);
-	/*mapManager.Init("stage.txt", MAP_WIDTH, MAP_HEIGHT);
+	GET_SINGLE(MapManager)->Init("TestMap.txt");
 	
+	// Player Start Pos Settings
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			if (_arrMap[i][j] == (char)OBJ_TYPE::START)
-				*_pStartPos = { j,i };
+			if (GET_SINGLE(MapManager)->arrMap[i][j] == (char)OBJ_TYPE::START)
+				GET_SINGLE(Core)->player->tPos = {j,i};
 		}
 	}
-	*_pPlayer = { *_pStartPos,{}, 1,1,false, false,false };*/
 }
