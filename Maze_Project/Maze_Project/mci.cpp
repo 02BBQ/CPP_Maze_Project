@@ -3,6 +3,7 @@
 #include<Digitalv.h>
 #include<string>
 #include "mci.h"
+#pragma comment(lib, "winmm.lib")
 UINT Bgmid;
 UINT Effectid;
 
