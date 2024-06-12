@@ -5,7 +5,6 @@ MK_GameLogic* MK_GameLogic::m_pInst = nullptr;
 
 MK_GameLogic::MK_GameLogic()
 {
-
 }
 
 void MK_GameLogic::Init()

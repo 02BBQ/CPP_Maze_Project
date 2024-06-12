@@ -23,8 +23,8 @@ int main() {
 }
 
 void Update() {
-	Core::GetInst()->player->Move();
+	GET_SINGLE(Core)->player->Move();
 }
 void Render() {
-
+	GET_SINGLE(MapManager)->Render();
 }
