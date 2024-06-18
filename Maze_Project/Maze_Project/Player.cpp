@@ -25,7 +25,7 @@ void Player::Move()
 	cout << tPos.y;*/
 
 	tPos = tNewPos;
-	Sleep(100);
+	Sleep(33);
 }
 
 FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
@@ -37,6 +37,12 @@ FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
 		newPos = { newPos.x + dir.x , newPos.y + dir.y };
 		if (MapManager::GetInst()->arrMap[newPos.y][newPos.x] == (char)OBJ_TYPE::WALL) {
 			newPos = { newPos.x - dir.x, newPos.y - dir.y };
+			return newPos;
+		}
+		if (newPos.x == MAP_WIDTH || newPos.y == MAP_HEIGHT
+			|| newPos.x == -1
+			|| newPos.y == -1) {
+			newPos = { newPos.x, newPos.y };
 			return newPos;
 		}
 		++tries;
