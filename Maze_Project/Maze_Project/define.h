@@ -2,7 +2,7 @@
 #include<iostream>
 #include<algorithm>
 #include<fstream>
-#include"Player.h";
+#include"Player.h"
 #include"console.h"
 #include"MapManager.h"
 using std::cout;

@@ -1,6 +1,7 @@
 #pragma once
 #include "define.h"
 
+class Player;
 class Core
 {
 private:
