@@ -1,9 +1,11 @@
 #include "Core.h"
 #include "define.h"
 #include "console.h"
+#include "MK_GameLogic.h";
 
 void Update();
 void Render();
+void Init();
 
 int main() {
 	if (!Core::GetInst()->Init()) {
@@ -11,6 +13,8 @@ int main() {
 		Core::DestroyInst();
 		return 0;
 	}
+
+	Init();
 	while (true)
 	{
 		Update();
@@ -20,6 +24,11 @@ int main() {
 		//FrameSync(60);
 	}
 	return 0;
+}
+
+void Init()
+{
+	GET_SINGLE(MK_GameLogic)->Init();
 }
 
 void Update() {

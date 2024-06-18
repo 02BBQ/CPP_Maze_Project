@@ -3,7 +3,7 @@
 #include "Core.h"
 
 const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 20;
+const int MAP_HEIGHT = 22;
 
 enum class OBJ_TYPE
 {
@@ -15,6 +15,7 @@ class MapManager
 private:
 	MapManager();
 	static MapManager* m_pInst;
+public:
 public:
 	static MapManager* GetInst() {
 		if (m_pInst == nullptr)

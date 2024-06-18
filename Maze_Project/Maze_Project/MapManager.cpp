@@ -25,21 +25,29 @@ void MapManager::Init(std::string const MAP_FILE)
 
 void MapManager::Render()
 {
+	Player* p_player = GET_SINGLE(Core)->player;
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			if (GET_SINGLE(Core)->player->tPos.x == j &&
-				GET_SINGLE(Core)->player->tPos.y == i)
-				cout << "¡×";
+			if (p_player->tPos.x == j && p_player->tPos.y == i)
+			{
+				SetColor((int)COLOR::LIGHT_YELLOW);
+				cout << "¢Â";
+			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
 				cout << "¡á";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
-				cout << "  ";
+				cout << " ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "¡Ú";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
+			{
+				SetColor((int)COLOR::RED);
+				cout << "¡ã";
+			}
 			SetColor((int)COLOR::WHITE);
 		}
-		cout << endl;
+		cout << "\n";
 	}
 }

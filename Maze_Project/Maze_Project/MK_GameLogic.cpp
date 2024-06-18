@@ -18,7 +18,8 @@ void MK_GameLogic::Init()
 
 	//Loding Map
 	GET_SINGLE(MapManager)->Init("TestMap.txt");
-	
+	system("cls");
+
 	// Player Start Pos Settings
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
