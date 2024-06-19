@@ -10,6 +10,7 @@ private:
 public:
     Player* player;
     Camera* camera;
+    int score;
 public:
     bool Init();
     void Run();
@@ -26,4 +27,5 @@ public:
     }
 private:
     static Core* m_pInst;
+    int startTime;
 };

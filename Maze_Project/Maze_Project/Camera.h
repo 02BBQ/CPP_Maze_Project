@@ -9,6 +9,6 @@ public:
 		topCam = 0;
 		bottomCam = 20;
 	}
-	static int topCam;
-	static int bottomCam;
+	int topCam;
+	int bottomCam;
 };

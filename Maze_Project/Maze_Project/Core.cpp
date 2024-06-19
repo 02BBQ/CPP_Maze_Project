@@ -9,6 +9,8 @@ bool Core::Init()
 {
 	player = new Player();
 	camera = new Camera();
+	score = 0;
+	startTime = clock();
 	/*system("title 21Bombman | mode con cols=80 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
@@ -50,6 +52,9 @@ void Core::Render()
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
 	for (int i = camera->topCam; i < camera->bottomCam; ++i)
 	{
+		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_) {
+			cout << " ";
+		}
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (player->tPos.x == j && player->tPos.y == i)
@@ -73,5 +78,5 @@ void Core::Render()
 		cout << "\n";
 	}
 	Gotoxy(MAP_WIDTH/1.5, MAP_HEIGHT + 2);
-	cout << "PlayerPos: " << p_player->tPos.x << ", " << p_player->tPos.y << "\t\t";
+	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
 }
