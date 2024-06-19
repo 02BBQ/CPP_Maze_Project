@@ -54,5 +54,15 @@ void MapManager::Render()
 
 void MapManager::ObstacleRender()
 {
-	
+	for (int i = 0; i < MAP_HEIGHT; ++i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			/*if (p_player->tPos.x == j && p_player->tPos.y == i)
+			{
+				SetColor((int)COLOR::LIGHT_YELLOW);
+				cout << "¢Â";
+			}*/
+		}
+	}
 }

@@ -8,6 +8,7 @@ Core::Core()
 bool Core::Init()
 {
 	player = new Player();
+	camera = new Camera();
 	/*system("title 21Bombman | mode con cols=80 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
