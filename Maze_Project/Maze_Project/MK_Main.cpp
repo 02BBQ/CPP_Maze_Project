@@ -19,15 +19,6 @@ int main()
 	Init();
 	while (true)
 	{
-		if (GetAsyncKeyState(VK_SHIFT))
-		{
-			GET_SINGLE(MapManager)->renderingPos = 0;
-		}
-		if (GetAsyncKeyState(VK_CONTROL))
-		{
-			GET_SINGLE(MapManager)->renderingPos = 1;
-		}
-
 		Update();
 		Gotoxy(0, 0);
 		Render();
