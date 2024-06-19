@@ -19,3 +19,5 @@ enum class COLOR
 	LIGHT_GREEN, MINT, LIGHT_RED, LIGHT_VIOLET,
 	LIGHT_YELLOW, WHITE, END
 };
+bool IsWindows10OrGreater();
+bool IsWindows11OrGreater();

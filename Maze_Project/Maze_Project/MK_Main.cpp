@@ -48,5 +48,5 @@ void Update()
 }
 void Render() 
 {
-	GET_SINGLE(MapManager)->Render();
+	GET_SINGLE(Core)->Render();
 }

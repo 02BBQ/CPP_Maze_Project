@@ -99,3 +99,29 @@ void SetFontSize(UINT _weight, UINT _sizex, UINT _sizey)
 	SetCurrentConsoleFontEx(hOut, false, &font);
 
 }
+
+bool IsWindows10OrGreater()
+{
+	OSVERSIONINFOEXW osInfo = { 0 };
+	osInfo.dwOSVersionInfoSize = sizeof(osInfo);
+	osInfo.dwMajorVersion = 10;
+	DWORDLONG conditionMask = 0;
+	VER_SET_CONDITION(conditionMask, VER_MAJORVERSION, VER_GREATER_EQUAL);
+
+	return VerifyVersionInfoW(&osInfo, VER_MAJORVERSION, conditionMask);
+}
+
+bool IsWindows11OrGreater()
+{
+	OSVERSIONINFOEXW osInfo = { 0 };
+	osInfo.dwOSVersionInfoSize = sizeof(osInfo);
+	osInfo.dwMajorVersion = 10;
+	osInfo.dwMinorVersion = 0;
+	osInfo.dwBuildNumber = 22000; // Build number for Windows 11
+	DWORDLONG conditionMask = 0;
+	VER_SET_CONDITION(conditionMask, VER_MAJORVERSION, VER_GREATER_EQUAL);
+	VER_SET_CONDITION(conditionMask, VER_MINORVERSION, VER_GREATER_EQUAL);
+	VER_SET_CONDITION(conditionMask, VER_BUILDNUMBER, VER_GREATER_EQUAL);
+
+	return VerifyVersionInfoW(&osInfo, VER_MAJORVERSION | VER_MINORVERSION | VER_BUILDNUMBER, conditionMask);
+}
