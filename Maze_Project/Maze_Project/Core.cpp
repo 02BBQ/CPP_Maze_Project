@@ -31,7 +31,7 @@ void Core::Run()
 	while (true)
 	{
 		Update();
-		//Gotoxy(0,0);
+		Gotoxy(0,0);
 		Render();
 		//시간동기화
 		//FrameSync(60);
@@ -40,10 +40,25 @@ void Core::Run()
 
 void Core::Update()
 {
+	this->player->Move();
 }
 
 void Core::Render()
 {
 	// 나중에 수정
-	
+	auto arrMap = GET_SINGLE(MapManager)->arrMap;
+	for (int i = 0; i < MAP_HEIGHT; ++i) {
+		for (int j = 0; j < MAP_WIDTH; ++j) {
+			if (player->tPos.x == j && player->tPos.y == i)
+				cout << "♡";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
+				cout << "■";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
+				cout << "  ";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
+				cout << "ㅗ";
+			SetColor((int)COLOR::WHITE);
+		}
+		cout << "\n";
+	}
 }

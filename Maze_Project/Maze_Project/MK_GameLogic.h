@@ -5,6 +5,7 @@
 #include "mci.h"
 #include "console.h"
 #include "define.h"
+#include "MapManager.h"
 
 class MK_GameLogic
 {

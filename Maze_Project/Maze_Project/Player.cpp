@@ -39,10 +39,10 @@ FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
 			newPos = { newPos.x - dir.x, newPos.y - dir.y };
 			return newPos;
 		}
-		if (newPos.x == MAP_WIDTH || newPos.y == MAP_HEIGHT
+		if (newPos.x == MAP_WIDTH || newPos.y == MAP_HEIGHT 
 			|| newPos.x == -1
 			|| newPos.y == -1) {
-			newPos = { newPos.x, newPos.y };
+			//newPos = { std::clamp(newPos.x,0,MAP_WIDTH), std::clamp(newPos.y,0,MAP_HEIGHT) };
 			return newPos;
 		}
 		++tries;

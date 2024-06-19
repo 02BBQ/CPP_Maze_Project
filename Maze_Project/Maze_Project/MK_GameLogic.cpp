@@ -1,5 +1,5 @@
 #include "MK_GameLogic.h"
-#include "MapManager.h"
+
 
 MK_GameLogic* MK_GameLogic::m_pInst = nullptr;
 
