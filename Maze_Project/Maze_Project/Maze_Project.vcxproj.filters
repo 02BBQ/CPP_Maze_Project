@@ -87,5 +87,7 @@
   <ItemGroup>
     <Text Include="stage.txt" />
     <Text Include="TestMap.txt" />
+    <Text Include="123.txt" />
+    <Text Include="TestStageMap.txt" />
   </ItemGroup>
 </Project>

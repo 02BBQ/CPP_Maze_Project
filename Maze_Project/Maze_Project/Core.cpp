@@ -60,7 +60,7 @@ void Core::Render()
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
 				cout << "бс";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
-				cout << (IsWindows11OrGreater() ? " " : "  ");
+				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "б┌";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
