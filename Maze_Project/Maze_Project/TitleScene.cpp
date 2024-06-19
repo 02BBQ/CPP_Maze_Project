@@ -1,17 +1,20 @@
-#include"TitleScene.h"
+ï»¿#include"TitleScene.h"
 #include"define.h"
 #include<fcntl.h>
 #include<corecrt_io.h>
 
+char halka[4] = { '|', '/', '-', '\\' };
+int loop;
+
 void TitleRender() {
 	int beforemode = _setmode(_fileno(stdout), _O_U16TEXT);
 
-
-	wcout << L"\t\t\t\t    ____  __                __          __    __         " << endl;
-	wcout << L"\t\t\t\t   / __ \/ /___ _________  / /_  ____  / /___/ /__  _____" << endl;
-	wcout << L"\t\t\t\t  / /_/ / / __ `/ ___/ _ \/ __ \/ __ \/ / __  / _ \/ ___/" << endl;
-	wcout << L"\t\t\t\t / ____/ / /_/ / /__/  __/ / / / /_/ / / /_/ /  __/ /    " << endl;
-	wcout << L"\t\t\t\t/_/   /_/\__,_/\___/\___/_/ /_/\____/_/\__,_/\___/_/     " << endl;
+	wcout << "\n\n\n\n";
+	wcout << L"\t        ____  __                __          __    __         " << endl;
+	wcout << L"\t       / __ \/ /___ _________  / /_  ____  / /___/ /__  _____" << endl;
+	wcout << L"\t      / /_/ / / __ `/ ___/ _ \/ __ \/ __ \/ / __  / _ \/ ___/" << endl;
+	wcout << L"\t     / ____/ / /_/ / /__/  __/ / / / /_/ / / /_/ /  __/ /    " << endl;
+	wcout << L"\t    /_/   /_/\__,_/\___/\___/_/ /_/\____/_/\__,_/\___/_/     " << endl;
 
 
 
@@ -20,8 +23,15 @@ void TitleRender() {
 
 bool TitleScene()
 {
+	
+	
 	while (true)
 	{
+		/*deltaTime = clock() - oldTime;
+		double fps = (1.0 / deltaTime) * 1000;
+		oldTime = clock();*/
+		
+
 		system("cls");
 		TitleRender();
 		MENU eMenu = MenuRender();
@@ -42,10 +52,10 @@ bool TitleScene()
 
 void InfoRender()
 {
-	cout << "[Á¶ÀÛ¹ý ]" << endl;
-	//¾ê°¡ °è¼Ó Ãâ·Â
-	//µÇ¾îÀÖ´Â »óÅÂ¿©¾ßÇÔ.
-	//½ºÆäÀÌ½º ´­¸®¸é ³ª°¡Á®.
+	cout << "[ì¡°ìž‘ë²• ]" << endl;
+	//ì–˜ê°€ ê³„ì† ì¶œë ¥
+	//ë˜ì–´ìžˆëŠ” ìƒíƒœì—¬ì•¼í•¨.
+	//ìŠ¤íŽ˜ì´ìŠ¤ ëˆŒë¦¬ë©´ ë‚˜ê°€ì ¸.
 	Sleep(100);
 	while (true) {
 		if (KeyController() == KEY::SPACE)
@@ -60,22 +70,33 @@ void InfoRender()
 
 MENU MenuRender()
 {
+	double deltaTime, oldTime = clock();
+	loop = 0;
+
 	COORD Resolution = GetConsoleResolution();
-	int x = Resolution.X / 2.25;
-	int y = Resolution.Y / 3.5;
+	int x = Resolution.X / 2.3;
+	int y = Resolution.Y / 2.3;
 	int top = y;
 	int bottom = y + 2;
 	Gotoxy(x, y);
-	cout << "°ÔÀÓ ½ÃÀÛ";
+	cout << "ê²Œìž„ ì‹œìž‘";
 	Gotoxy(x, y + 1);
-	cout << "°ÔÀÓ Á¤º¸";
+	cout << "ê²Œìž„ ì •ë³´";
 	Gotoxy(x, y + 2);
-	cout << "°ÔÀÓ Á¾·á";
+	cout << "ê²Œìž„ ì¢…ë£Œ";
 
 	Gotoxy(x - 2, y);
-	cout << ">";
+	cout << halka[loop];
 	Sleep(100);
 	while (true) {
+		if (100 < clock() - oldTime) {
+			oldTime = clock();
+			++loop; 
+			if (loop > 3) 
+				loop = 0;
+		}
+		Gotoxy(x - 2, y);
+		cout << halka[loop];
 		KEY eKey = KeyController();
 		switch (eKey)
 		{
@@ -84,7 +105,7 @@ MENU MenuRender()
 				Gotoxy(x - 2, y);
 				cout << " ";
 				Gotoxy(x - 2, --y);
-				cout << ">";
+				cout << halka[loop];
 				Sleep(100);
 			}
 			break;
@@ -93,7 +114,7 @@ MENU MenuRender()
 				Gotoxy(x - 2, y);
 				cout << " ";
 				Gotoxy(x - 2, ++y);
-				cout << ">";
+				cout << halka[loop];
 				Sleep(100);
 			}
 			break;

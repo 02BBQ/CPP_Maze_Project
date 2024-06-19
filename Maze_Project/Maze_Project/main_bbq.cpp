@@ -6,8 +6,7 @@
 
 void Update();
 void Render();
-
-
+void Init();
 
 int main() {                                                      
 	if (!Core::GetInst()->Init()) {
@@ -15,6 +14,8 @@ int main() {
 		Core::DestroyInst();
 		return 0;
 	}
+
+	Init();
 
 	if (!TitleScene()) {
 		return 0;
@@ -53,4 +54,9 @@ void Render()
 		}
 		cout << "\n";
 	}
+}
+void Init() {
+	system("title 21Bombman | mode con cols=80 lines=40");
+	SetCursorVis(false, 1);
+	LockResize();
 }
