@@ -72,4 +72,6 @@ void Core::Render()
 		}
 		cout << "\n";
 	}
+	Gotoxy(MAP_WIDTH/1.5, MAP_HEIGHT + 2);
+	cout << "PlayerPos: " << p_player->tPos.x << ", " << p_player->tPos.y << "\t\t";
 }
