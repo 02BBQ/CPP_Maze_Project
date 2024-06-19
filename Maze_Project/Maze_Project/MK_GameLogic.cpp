@@ -5,7 +5,6 @@ MK_GameLogic* MK_GameLogic::m_pInst = nullptr;
 
 MK_GameLogic::MK_GameLogic()
 {
-
 }
 
 void MK_GameLogic::Init()
@@ -18,8 +17,11 @@ void MK_GameLogic::Init()
 	 
 
 	//Loding Map
+	//TestMap.txt
+	//TestStageMap.txt
 	GET_SINGLE(MapManager)->Init("TestMap.txt");
-	
+	system("cls");
+
 	// Player Start Pos Settings
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{

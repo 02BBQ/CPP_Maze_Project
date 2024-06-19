@@ -22,3 +22,32 @@ void MapManager::Init(std::string const MAP_FILE)
 	// RAII
 	readMap.close();
 }
+
+void MapManager::Render()
+{
+	Player* p_player = GET_SINGLE(Core)->player;
+	for (int i = renderingPos; i < MAP_HEIGHT; ++i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			if (p_player->tPos.x == j && p_player->tPos.y == i)
+			{
+				SetColor((int)COLOR::LIGHT_YELLOW);
+				cout << "в┬";
+			}
+			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
+				cout << "бс";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
+				cout << " ";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
+				cout << "б┌";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
+			{
+				SetColor((int)COLOR::RED);
+				cout << "бу";
+			}
+			SetColor((int)COLOR::WHITE);
+		}
+		cout << "\n";
+	}
+}

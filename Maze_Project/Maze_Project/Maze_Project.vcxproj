@@ -134,9 +134,14 @@
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="main_bbq.cpp" />
+    <ClCompile Include="main_bbq.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="mci.cpp" />
+    <ClCompile Include="MK_Main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="MK_Scene.cpp" />
     <ClCompile Include="MK_GameLogic.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -155,8 +160,10 @@
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="123.txt" />
     <Text Include="stage.txt" />
     <Text Include="TestMap.txt" />
+    <Text Include="TestStageMap.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
