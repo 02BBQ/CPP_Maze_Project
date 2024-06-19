@@ -29,6 +29,6 @@ public:
 
 	void Init(std::string const MAP_FILE);
 	void Render();
-	void ObstacleRender();
+	void ObstacleRender(Player* p_player);
 };
 
