@@ -26,7 +26,7 @@ void MapManager::Init(std::string const MAP_FILE)
 void MapManager::Render()
 {
 	Player* p_player = GET_SINGLE(Core)->player;
-	for (int i = 0; i < MAP_HEIGHT; ++i)
+	for (int i = renderingPos; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{

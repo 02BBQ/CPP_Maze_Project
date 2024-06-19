@@ -17,6 +17,8 @@ void MK_GameLogic::Init()
 	 
 
 	//Loding Map
+	//TestMap.txt
+	//TestStageMap.txt
 	GET_SINGLE(MapManager)->Init("TestMap.txt");
 	system("cls");
 

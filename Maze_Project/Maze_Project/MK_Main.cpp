@@ -7,8 +7,10 @@ void Update();
 void Render();
 void Init();
 
-int main() {
-	if (!Core::GetInst()->Init()) {
+int main() 
+{
+	if (!Core::GetInst()->Init()) 
+	{
 		cout << "Game Init Error" << endl;
 		Core::DestroyInst();
 		return 0;
@@ -17,6 +19,15 @@ int main() {
 	Init();
 	while (true)
 	{
+		if (GetAsyncKeyState(VK_SHIFT))
+		{
+			GET_SINGLE(MapManager)->renderingPos = 0;
+		}
+		if (GetAsyncKeyState(VK_CONTROL))
+		{
+			GET_SINGLE(MapManager)->renderingPos = 1;
+		}
+
 		Update();
 		Gotoxy(0, 0);
 		Render();
@@ -31,9 +42,11 @@ void Init()
 	GET_SINGLE(MK_GameLogic)->Init();
 }
 
-void Update() {
+void Update() 
+{
 	GET_SINGLE(Core)->player->Move();
 }
-void Render() {
+void Render() 
+{
 	GET_SINGLE(MapManager)->Render();
 }

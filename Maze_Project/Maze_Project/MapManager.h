@@ -3,7 +3,7 @@
 #include "Core.h"
 
 const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 22;
+const int MAP_HEIGHT = 24;
 
 enum class OBJ_TYPE
 {
@@ -24,7 +24,8 @@ public:
 	}
 
 public:
-	char arrMap[MAP_WIDTH][MAP_HEIGHT] = {};
+	char arrMap[MAP_HEIGHT][MAP_WIDTH] = {};
+	int renderingPos = 0;
 
 public:
 	void Init(std::string const MAP_FILE);
