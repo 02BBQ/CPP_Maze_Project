@@ -1,6 +1,7 @@
 #pragma once
 #include "define.h"
 #include "Core.h"
+#include "Camera.h"
 
 const int MAP_WIDTH = 21;
 const int MAP_HEIGHT = 24;
@@ -15,7 +16,7 @@ class MapManager
 private:
 	MapManager();
 	static MapManager* m_pInst;
-public:
+
 public:
 	static MapManager* GetInst() {
 		if (m_pInst == nullptr)
@@ -25,10 +26,9 @@ public:
 
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH] = {};
-	int renderingPos = 0;
 
-public:
 	void Init(std::string const MAP_FILE);
 	void Render();
+	void ObstacleRender();
 };
 

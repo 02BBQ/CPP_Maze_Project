@@ -1,12 +1,15 @@
 #pragma once
 #include "define.h"
 class Player;
+class Camera;
+
 class Core
 {
 private:
     Core();
 public:
     Player* player;
+    Camera* camera;
 public:
     bool Init();
     void Run();

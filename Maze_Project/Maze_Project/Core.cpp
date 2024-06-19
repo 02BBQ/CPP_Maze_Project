@@ -47,12 +47,11 @@ void Core::Render()
 {
 	// 나중에 수정
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
-	Player* p_player = GET_SINGLE(Core)->player;
-	for (int i = GET_SINGLE(MapManager)->renderingPos; i < MAP_HEIGHT; ++i)
+	for (int i = camera->topCam; i < camera->bottomCam; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			if (p_player->tPos.x == j && p_player->tPos.y == i)
+			if (player->tPos.x == j && player->tPos.y == i)
 			{
 				SetColor((int)COLOR::LIGHT_YELLOW);
 				cout << "◈";
