@@ -3,12 +3,15 @@ Core* Core::m_pInst = nullptr;
 
 Core::Core()
 {
-	
+	player = new Player();
+	camera = new Camera();
+	score = 0;
+	startTime = 0;
 }
 bool Core::Init()
 {
-	player = new Player();
-	camera = new Camera();
+	if (player == nullptr) player = new Player();
+	if (camera == nullptr) camera = new Camera();
 	score = 0;
 	startTime = clock();
 	/*system("title 21Bombman | mode con cols=80 lines=40");
