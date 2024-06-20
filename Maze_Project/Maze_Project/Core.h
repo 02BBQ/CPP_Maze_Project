@@ -2,6 +2,7 @@
 #include "define.h"
 class Player;
 class Camera;
+class WorldTime;
 
 class Core
 {
@@ -10,7 +11,7 @@ private:
 public:
     Player* player;
     Camera* camera;
-    int score;
+    WorldTime* timer;
 public:
     bool Init();
     void Run();
@@ -27,5 +28,4 @@ public:
     }
 private:
     static Core* m_pInst;
-    int startTime;
 };

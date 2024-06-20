@@ -8,6 +8,7 @@
 #include"Player.h"
 #include"Camera.h"
 #include"console.h"
+#include "WorldTime.h"
 #include"MapManager.h"
 using std::cout;
 using std::wcout;

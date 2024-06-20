@@ -8,6 +8,8 @@ MapManager::MapManager()
 
 void MapManager::Init(std::string const MAP_FILE)
 {
+	std::ios_base::sync_with_stdio(false);
+
 	// Loading Map
 	std::fstream readMap(MAP_FILE);
 	if (readMap.is_open())
@@ -38,31 +40,26 @@ void MapManager::Render()
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
 				cout << "бс";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
-				cout << " ";
+				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "б┌";
-			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
-			{
-				SetColor((int)COLOR::RED);
-				cout << "бу";
-			}
 			SetColor((int)COLOR::WHITE);
 		}
 		cout << "\n";
 	}
+	ObstacleRender();
 }
 
 void MapManager::ObstacleRender()
 {
-	for (int i = 0; i < MAP_HEIGHT; ++i)
+	for (int i = 0; i < 2; ++i)
 	{
-		for (int j = 0; j < MAP_WIDTH; ++j)
+		for (int j = 0; j < MAP_WIDTH - 1; ++j)
 		{
-			/*if (p_player->tPos.x == j && p_player->tPos.y == i)
-			{
-				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "в┬";
-			}*/
+			SetColor((int)COLOR::RED);
+			cout << "бу";
 		}
+		cout << "\n";
 	}
+	SetColor((int)COLOR::WHITE);
 }

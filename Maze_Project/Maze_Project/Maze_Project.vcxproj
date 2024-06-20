@@ -146,6 +146,7 @@
     <ClCompile Include="MK_Scene.cpp" />
     <ClCompile Include="MK_GameLogic.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="WorldTime.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="MK_Scene.h" />
     <ClInclude Include="MK_GameLogic.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="WorldTime.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
