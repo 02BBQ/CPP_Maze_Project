@@ -12,6 +12,8 @@ public:
     Player* player;
     Camera* camera;
     WorldTime* timer;
+    int score = 0;
+    int startTime;
 public:
     bool Init();
     void Run();

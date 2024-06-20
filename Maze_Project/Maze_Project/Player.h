@@ -4,14 +4,13 @@
 
 class Player
 {
+private:
+	float lastMoveTime;
 public:
 	FLOAT2 tPos;
 	FLOAT2 tNewPos;
 public:
-	Player() {
-		this->tPos = { 0,0 };
-		this->tNewPos = this->tPos;
-	}
+	Player();
 	void Move();
 	FLOAT2 Raycast(FLOAT2 origin, FLOAT2 dir);
 };

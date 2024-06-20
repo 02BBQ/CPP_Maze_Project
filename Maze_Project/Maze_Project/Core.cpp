@@ -10,7 +10,6 @@ Core::Core()
 }
 bool Core::Init()
 {
-<<<<<<< HEAD
 	if (player == nullptr) player = new Player();
 	if (camera == nullptr) camera = new Camera();
 	timer = new WorldTime();
@@ -28,7 +27,7 @@ void Core::Run()
 		Update();
 		Gotoxy(0,0);
 		Render();
-		//�ð�����ȭ
+		//프레임 조정
 		//FrameSync(60);
 	}
 }
@@ -42,7 +41,6 @@ void Core::Update()
 
 void Core::Render()
 {
-	// ���߿� ����
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
 	for (int i = camera->topCam; i < camera->bottomCam; ++i)
 	{
