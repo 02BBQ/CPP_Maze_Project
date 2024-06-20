@@ -9,20 +9,7 @@ bool Core::Init()
 {
 	player = new Player();
 	camera = new Camera();
-	/*system("title 21Bombman | mode con cols=80 lines=40");
-	SetCursorVis(false, 1);
-	LockResize();
-
-	std::fstream readMap("stage.txt");
-	if (readMap.is_open()) {
-		for (int i = 0; i < MAP_HEIGHT; ++i) {
-			readMap.getline(, MAP_WIDTH);
-			if (readMap.fail())
-				std::cout << "파일 에러";
-		}
-	}
-
-	readMap.close();*/
+	timer = new WorldTime();
 	
 	return true;
 }
@@ -31,6 +18,7 @@ void Core::Run()
 {
 	while (true)
 	{
+		
 		Update();
 		Gotoxy(0,0);
 		Render();
@@ -42,6 +30,8 @@ void Core::Run()
 void Core::Update()
 {
 	this->player->Move();
+	this->timer->StartWorldTime();
+	
 }
 
 void Core::Render()
@@ -63,13 +53,9 @@ void Core::Render()
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "★";
-			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
-			{
-				SetColor((int)COLOR::RED);
-				cout << "▲";
-			}
 			SetColor((int)COLOR::WHITE);
 		}
 		cout << "\n";
 	}
+	cout << timer->deltaTime << endl;
 }

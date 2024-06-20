@@ -2,6 +2,7 @@
 #include "define.h"
 class Player;
 class Camera;
+class WorldTime;
 
 class Core
 {
@@ -10,6 +11,7 @@ private:
 public:
     Player* player;
     Camera* camera;
+    WorldTime* timer;
 public:
     bool Init();
     void Run();

@@ -4,11 +4,11 @@
 #include "Camera.h"
 
 const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 24;
+const int MAP_HEIGHT = 23;
 
 enum class OBJ_TYPE
 {
-	ROAD = '0', WALL, START, COIN, DANGER = '9'
+	ROAD = '0', WALL, START, COIN,
 };
 
 class MapManager
@@ -29,6 +29,6 @@ public:
 
 	void Init(std::string const MAP_FILE);
 	void Render();
-	void ObstacleRender(Player* p_player);
+	void ObstacleRender();
 };
 

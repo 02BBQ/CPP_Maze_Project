@@ -7,6 +7,7 @@
 #include<Windows.h>
 #include"Player.h"
 #include"console.h"
+#include "WorldTime.h"
 #include"MapManager.h"
 using std::cout;
 using std::wcout;

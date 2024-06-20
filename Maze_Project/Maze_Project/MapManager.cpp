@@ -43,20 +43,14 @@ void MapManager::Render()
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "¡Ú";
-			else if (arrMap[i][j] == (char)OBJ_TYPE::DANGER)
-			{
-				SetColor((int)COLOR::BLUE);
-				cout << "¡ã";
-			}
 			SetColor((int)COLOR::WHITE);
 		}
 		cout << "\n";
 	}
-	//cout << "what the fuck";
-	ObstacleRender(p_player);
+	ObstacleRender();
 }
 
-void MapManager::ObstacleRender(Player* p_player)
+void MapManager::ObstacleRender()
 {
 	for (int i = 0; i < 2; ++i)
 	{
