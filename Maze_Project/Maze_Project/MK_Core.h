@@ -4,10 +4,10 @@ class Player;
 class Camera;
 class GameTimer;
 
-class Core
+class MK_Core
 {
 private:
-    Core();
+    MK_Core();
 public:
     Player* player;
     Camera* camera;
@@ -18,14 +18,15 @@ public:
     void Update();
     void Render();
 public:
-    static Core* GetInst() {
+    static MK_Core* GetInst() {
         if (m_pInst == nullptr)
-            m_pInst = new Core;
+            m_pInst = new MK_Core;
         return m_pInst;
     }
     static void DestroyInst() {
         DESTROYER(m_pInst);
     }
 private:
-    static Core* m_pInst;
+    static MK_Core* m_pInst;
 };
+

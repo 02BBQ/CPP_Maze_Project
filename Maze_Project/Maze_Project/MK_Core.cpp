@@ -1,40 +1,40 @@
-#include "Core.h"
-Core* Core::m_pInst = nullptr;
+#include "MK_Core.h"
+MK_Core* MK_Core::m_pInst = nullptr;
 
-Core::Core()
+MK_Core::MK_Core()
 {
-	
+
 }
 
-bool Core::Init()
+bool MK_Core::Init()
 {
 	player = new Player();
 	camera = new Camera();
 	gameTime = new GameTimer();
-	
+
 	return true;
 }
 
-void Core::Run()
+void MK_Core::Run()
 {
 	while (true)
 	{
-		
+
 		Update();
-		Gotoxy(0,0);
+		Gotoxy(0, 0);
 		//Render();
 		//시간동기화
 		//FrameSync(60);
 	}
 }
 
-void Core::Update()
+void MK_Core::Update()
 {
 	this->player->Move();
 	this->gameTime->Update();
 }
 
-void Core::Render()
+void MK_Core::Render()
 {
 	// 나중에 수정
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
