@@ -6,7 +6,7 @@ class Camera
 public:
 	Camera()
 	{
-		topCam = 1;
+		topCam = 0;
 		bottomCam = 21;
 	}
 

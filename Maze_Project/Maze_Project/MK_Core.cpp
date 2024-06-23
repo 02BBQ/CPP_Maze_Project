@@ -65,12 +65,14 @@ void MK_Core::MoveMap()
 {
 	if (GetAsyncKeyState(VK_SHIFT))
 	{
+		if (camera->topCam <= 0) return;
 		camera->topCam--;
 		camera->bottomCam--;
 	}
 
 	if (GetAsyncKeyState(VK_CONTROL))
 	{
+		if (camera->bottomCam >= MAP_HEIGHT) return;
 		camera->topCam++;
 		camera->bottomCam++;
 	}
