@@ -25,31 +25,6 @@ void MapManager::Init(std::string const MAP_FILE)
 	readMap.close();
 }
 
-void MapManager::Render()
-{
-	Player* p_player = GET_SINGLE(Core)->player;
-	for (int i = 0; i < MAP_HEIGHT; ++i)
-	{
-		for (int j = 0; j < MAP_WIDTH; ++j)
-		{
-			if (p_player->tPos.x == j && p_player->tPos.y == i)
-			{
-				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "¢Â";
-			}
-			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
-				cout << "¡á";
-			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
-				cout << "  ";
-			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-				cout << "¡Ú";
-			SetColor((int)COLOR::WHITE);
-		}
-		cout << "\n";
-	}
-	ObstacleRender();
-}
-
 void MapManager::ObstacleRender()
 {
 	for (int i = 0; i < 2; ++i)

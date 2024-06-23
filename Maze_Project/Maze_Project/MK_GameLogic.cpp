@@ -1,6 +1,5 @@
 #include "MK_GameLogic.h"
 
-
 MK_GameLogic* MK_GameLogic::m_pInst = nullptr;
 
 MK_GameLogic::MK_GameLogic()
@@ -28,7 +27,7 @@ void MK_GameLogic::Init()
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (GET_SINGLE(MapManager)->arrMap[i][j] == (char)OBJ_TYPE::START)
-				GET_SINGLE(Core)->player->tPos = {j,i};
+				GET_SINGLE(MK_Core)->player->tPos = {j,i};
 		}
 	}
 }

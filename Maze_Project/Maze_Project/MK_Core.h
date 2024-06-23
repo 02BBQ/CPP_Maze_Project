@@ -17,6 +17,7 @@ public:
     void Run();
     void Update();
     void Render();
+    void MoveMap();
 public:
     static MK_Core* GetInst() {
         if (m_pInst == nullptr)

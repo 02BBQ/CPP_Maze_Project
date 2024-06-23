@@ -1,10 +1,10 @@
 #pragma once
 #include "define.h"
-#include "Core.h"
 #include "Camera.h"
+#include "Core.h"
 
 const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 23;
+const int MAP_HEIGHT = 21;
 
 enum class OBJ_TYPE
 {
@@ -28,7 +28,6 @@ public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH] = {};
 
 	void Init(std::string const MAP_FILE);
-	void Render();
 	void ObstacleRender();
 };
 

@@ -6,6 +6,7 @@
 #include "console.h"
 #include "define.h"
 #include "MapManager.h"
+#include "MK_Core.h"
 
 class MK_GameLogic
 {

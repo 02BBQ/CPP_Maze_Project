@@ -22,7 +22,7 @@ void MK_Core::Run()
 
 		Update();
 		Gotoxy(0, 0);
-		//Render();
+		Render();
 		//시간동기화
 		//FrameSync(60);
 	}
@@ -30,6 +30,7 @@ void MK_Core::Run()
 
 void MK_Core::Update()
 {
+	MoveMap();
 	this->player->Move();
 	this->gameTime->Update();
 }
@@ -56,5 +57,21 @@ void MK_Core::Render()
 			SetColor((int)COLOR::WHITE);
 		}
 		cout << "\n";
+	}
+	GET_SINGLE(MapManager)->ObstacleRender();
+}
+
+void MK_Core::MoveMap()
+{
+	if (GetAsyncKeyState(VK_SHIFT))
+	{
+		camera->topCam--;
+		camera->bottomCam--;
+	}
+
+	if (GetAsyncKeyState(VK_CONTROL))
+	{
+		camera->topCam++;
+		camera->bottomCam++;
 	}
 }

@@ -57,6 +57,9 @@
     <ClCompile Include="GameTimer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MK_Core.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h">
@@ -93,6 +96,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="GameTimer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MK_Core.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
