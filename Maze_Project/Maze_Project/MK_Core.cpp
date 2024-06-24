@@ -75,5 +75,6 @@ void MK_Core::MoveMap()
 		if (camera->bottomCam >= MAP_HEIGHT) return;
 		camera->topCam++;
 		camera->bottomCam++;
+		cout << camera->bottomCam;
 	}
 }

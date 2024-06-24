@@ -6,8 +6,8 @@ class Camera
 public:
 	Camera()
 	{
-		topCam = 0;
-		bottomCam = 21;
+		topCam = (MAP_HEIGHT / 2);
+		bottomCam = 20 + (MAP_HEIGHT / 2);
 	}
 
 	int topCam;
