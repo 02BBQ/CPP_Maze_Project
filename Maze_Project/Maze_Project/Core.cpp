@@ -12,7 +12,7 @@ bool Core::Init()
 {
 	if (player == nullptr) player = new Player();
 	if (camera == nullptr) camera = new Camera();
-	timer = new WorldTime();
+	timer = new GameTimer();
 	score = 0;
 	startTime = clock();
 	
