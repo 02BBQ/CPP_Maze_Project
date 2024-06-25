@@ -6,9 +6,9 @@
 #include<fstream>
 #include<Windows.h>
 #include"Player.h"
-#include"Camera.h"
 #include"console.h"
 #include"GameTimer.h"
+#include "Camera.h"
 #include"MapManager.h"
 using std::cout;
 using std::wcout;

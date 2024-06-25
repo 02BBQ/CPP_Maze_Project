@@ -41,8 +41,9 @@ void MK_Core::Update()
 void MK_Core::Render()
 {
 	// 나중에 수정
+	int half_map_height = (MAP_HEIGHT / 2);
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
-	for (int i = camera->topCam; i < camera->bottomCam; ++i)
+	for (int i = camera->topCam + half_map_height; i < camera->bottomCam + half_map_height; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
@@ -63,7 +64,7 @@ void MK_Core::Render()
 	}
 	GET_SINGLE(MapManager)->ObstacleRender();
 
-	if (player->tPos.y >= camera->bottomCam)
+	if (player->tPos.y >= camera->bottomCam + half_map_height)
 		GameOver();
 }
 
@@ -84,24 +85,9 @@ void MK_Core::MoveMap()
 	time = this->gameTime->GetGameTime();
 	if (time > lastTime)
 	{
-		if (camera->topCam <= 0) return;
+		if (camera->topCam <= -20) return;
 		camera->topCam--;
 		camera->bottomCam--;
 		lastTime = this->gameTime->GetGameTime() + speed;
-	}
-
-	if (GetAsyncKeyState(VK_SHIFT))
-	{
-		if (camera->topCam <= 0) return;
-		camera->topCam--;
-		camera->bottomCam--;
-	}
-
-	if (GetAsyncKeyState(VK_CONTROL))
-	{
-		if (camera->bottomCam >= MAP_HEIGHT) return;
-		camera->topCam++;
-		camera->bottomCam++;
-		cout << camera->bottomCam;
 	}
 }

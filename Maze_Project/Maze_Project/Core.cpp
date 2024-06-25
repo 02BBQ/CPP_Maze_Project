@@ -35,7 +35,7 @@ void Core::Run()
 void Core::Update()
 {
 	this->player->Move();
-	this->timer->StartWorldTime();
+	this->timer->Update();
 	
 }
 
