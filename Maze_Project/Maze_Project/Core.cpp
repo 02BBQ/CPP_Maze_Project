@@ -15,7 +15,7 @@ bool Core::Init()
 	timer = new WorldTime();
 	score = 0;
 	startTime = clock();
-	
+
 	return true;
 }
 
@@ -23,11 +23,11 @@ void Core::Run()
 {
 	while (true)
 	{
-		
+
 		Update();
-		Gotoxy(0,0);
+		Gotoxy(0, 0);
 		Render();
-		//í”„ë ˆìž„ ì¡°ì •
+		//ÇÁ·¹ÀÓ Á¶Á¤
 		//FrameSync(60);
 	}
 }
@@ -36,7 +36,7 @@ void Core::Update()
 {
 	this->player->Move();
 	this->timer->StartWorldTime();
-	
+	score += timer->deltaTime;
 }
 
 void Core::Render()
@@ -52,18 +52,28 @@ void Core::Render()
 			if (player->tPos.x == j && player->tPos.y == i)
 			{
 				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "ï¿½ï¿½";
+				cout << "¢Â";
 			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
-				cout << "ï¿½ï¿½";
+				cout << "¡á";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-				cout << "ï¿½ï¿½";
-			SetColor((int)COLOR::WHITE);
+				cout << "¡Ú";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL) {
+				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::LIGHT_YELLOW);
+				cout << "  ";
+			}
+			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL2) {
+				SetColor((int)COLOR::MINT, (int)COLOR::MINT);
+				cout << "  ";
+			}
+			SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
 		}
 		cout << "\n";
 	}
-	Gotoxy(MAP_WIDTH/1.5, MAP_HEIGHT + 2);
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
+	cout << "Score: " << timer->currentTime/1000;
 }

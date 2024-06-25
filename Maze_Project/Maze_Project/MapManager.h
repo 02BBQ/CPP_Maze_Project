@@ -2,13 +2,15 @@
 #include "define.h"
 #include "Core.h"
 #include "Camera.h"
+#include <thread>
+#include <chrono>
 
 const int MAP_WIDTH = 21;
 const int MAP_HEIGHT = 23;
 
 enum class OBJ_TYPE
 {
-	ROAD = '0', WALL, START, COIN,
+	ROAD = '0', WALL, START, COIN, TRAIL = 'a', TRAIL2
 };
 
 class MapManager

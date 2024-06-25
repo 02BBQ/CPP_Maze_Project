@@ -146,8 +146,8 @@
     <ClCompile Include="MK_Scene.cpp" />
     <ClCompile Include="MK_GameLogic.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="WorldTime.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="WorldTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />

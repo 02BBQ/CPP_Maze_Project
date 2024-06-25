@@ -7,7 +7,7 @@ public:
 	Camera()
 	{
 		topCam = 0;
-		bottomCam = 20;
+		bottomCam = 22;
 	}
 	int topCam;
 	int bottomCam;

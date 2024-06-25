@@ -7,6 +7,13 @@ Player::Player()
 	lastMoveTime = 0;
 }
 
+void restoreTile(MapManager* mapManager, int x, int y, char originalType, int delayMilliseconds) {
+	std::this_thread::sleep_for(std::chrono::milliseconds(delayMilliseconds));
+	mapManager->arrMap[y][x] = (char)OBJ_TYPE::TRAIL2;
+	std::this_thread::sleep_for(std::chrono::milliseconds(delayMilliseconds));
+	mapManager->arrMap[y][x] = originalType;
+}
+
 void Player::Move()
 {
 	//this->tNewPos = this->tNewPos + Dirif ()
@@ -34,6 +41,19 @@ void Player::Move()
 	/*tPos =tNewPos;
 	cout << tPos.x << "\n";
 	cout << tPos.y;*/
+
+	if (tPos == tNewPos) return;
+
+	std::vector<FLOAT2> pathTiles = getLinePoints(tPos, tNewPos);
+	for (const auto& index : pathTiles) {
+		char* tile = &MapManager::GetInst()->arrMap[index.y][index.x];
+		if (*tile == (char)OBJ_TYPE::TRAIL || *tile == (char)OBJ_TYPE::TRAIL2) continue;
+		*tile = (char)OBJ_TYPE::TRAIL;
+		// 여기서 tile.x, tile.y를 사용하여 각 타일을 검사하거나 처리합니다.
+
+		std::thread restoreThread(restoreTile, MapManager::GetInst(), index.x, index.y, (char)OBJ_TYPE::ROAD, 100);
+		restoreThread.detach(); // 메인 스레드와 독립적으로 실행
+	}
 
 	tPos = tNewPos;
 }
@@ -65,3 +85,27 @@ FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
 }
 
 
+std::vector<FLOAT2> Player::getLinePoints(FLOAT2 start, FLOAT2 end) {
+	std::vector<FLOAT2> points;
+	int dx = std::abs(end.x - start.x);
+	int sx = start.x < end.x ? 1 : -1;
+	int dy = -std::abs(end.y - start.y);
+	int sy = start.y < end.y ? 1 : -1;
+	int err = dx + dy;
+
+	while (true) {
+		points.push_back(start);
+		if (start.x == end.x && start.y == end.y) break;
+		int e2 = 2 * err;
+		if (e2 >= dy) {
+			err += dy;
+			start.x += sx;
+		}
+		if (e2 <= dx) {
+			err += dx;
+			start.y += sy;
+		}
+	}
+
+	return points;
+}
