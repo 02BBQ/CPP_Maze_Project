@@ -8,7 +8,7 @@ MK_GameLogic::MK_GameLogic()
 
 void MK_GameLogic::Init()
 {
-	system("title Maze | mode con cols=40 lines=40");
+	system("title Maze | mode con cols=80 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
 	SetFontSize(FW_BOLD, 20, 20);
@@ -21,7 +21,7 @@ void MK_GameLogic::Init()
 	system("cls");
 
 	// Player Start Pos Settings
-	for (int i = 0; i < MAP_HEIGHT; ++i)
+	for (int i = 0; i < MAP_HEIGHT;		++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{

@@ -10,13 +10,14 @@ bool MK_Core::Init()
 {
 	player = new Player();
 	camera = new Camera();
-	gameTime = new GameTimer();
 
 	return true;
 }
 
 void MK_Core::Run()
 {
+	gameTime = new GameTimer();
+
 	while (true)
 	{
 
@@ -26,8 +27,6 @@ void MK_Core::Run()
 		{
 			Render();
 		}
-		//시간동기화
-		//FrameSync(60);
 	}
 }
 
@@ -40,7 +39,11 @@ void MK_Core::Update()
 
 void MK_Core::Render()
 {
-	// 나중에 수정
+	// 이거 수정 해야함
+	// 맵 80이면 
+	// 2 나누기 안돼
+	// 40, 60 나온다.
+	// 이거 다른 방법 써야 함
 	int half_map_height = (MAP_HEIGHT / 2);
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
 	for (int i = camera->topCam + half_map_height; i < camera->bottomCam + half_map_height; ++i)
@@ -64,8 +67,23 @@ void MK_Core::Render()
 	}
 	GET_SINGLE(MapManager)->ObstacleRender();
 
-	if (player->tPos.y >= camera->bottomCam + half_map_height)
-		GameOver();
+	// Clean Up ObstacleRender
+	//DestoryObstacle();
+
+	// GameOver
+	//if (player->tPos.y >= camera->bottomCam + half_map_height) GameOver();
+}
+
+/// <summary>
+/// Temporary Method
+/// </summary>
+void MK_Core::DestoryObstacle()
+{
+	Gotoxy(0, camera->bottomCam + 2);
+	for (int i = 0; i < MAP_WIDTH - 1; ++i)
+	{
+		cout << "  ";
+	}
 }
 
 void MK_Core::GameStart()
@@ -86,6 +104,7 @@ void MK_Core::MoveMap()
 	if (time > lastTime)
 	{
 		if (camera->topCam <= -20) return;
+		// topcam은 플레이어가 위로 움직일때 실행
 		camera->topCam--;
 		camera->bottomCam--;
 		lastTime = this->gameTime->GetGameTime() + speed;

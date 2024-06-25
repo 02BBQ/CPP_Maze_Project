@@ -37,5 +37,7 @@ public:
     void Render();
     void GameStart();
     void GameOver();
+
+    void DestoryObstacle();
 };
 
