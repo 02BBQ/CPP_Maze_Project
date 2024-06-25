@@ -3,14 +3,18 @@ Core* Core::m_pInst = nullptr;
 
 Core::Core()
 {
-	
-}
-
-bool Core::Init()
-{
 	player = new Player();
 	camera = new Camera();
-	gameTime = new GameTimer();
+	score = 0;
+	startTime = 0;
+}
+bool Core::Init()
+{
+	if (player == nullptr) player = new Player();
+	if (camera == nullptr) camera = new Camera();
+	timer = new WorldTime();
+	score = 0;
+	startTime = clock();
 	
 	return true;
 }
@@ -22,8 +26,8 @@ void Core::Run()
 		
 		Update();
 		Gotoxy(0,0);
-		//Render();
-		//½Ã°£µ¿±âÈ­
+		Render();
+		//í”„ë ˆìž„ ì¡°ì •
 		//FrameSync(60);
 	}
 }
@@ -31,30 +35,35 @@ void Core::Run()
 void Core::Update()
 {
 	this->player->Move();
-	this->gameTime->Update();
+	this->timer->StartWorldTime();
+	
 }
 
 void Core::Render()
 {
-	// ³ªÁß¿¡ ¼öÁ¤
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
 	for (int i = camera->topCam; i < camera->bottomCam; ++i)
 	{
+		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_) {
+			cout << " ";
+		}
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (player->tPos.x == j && player->tPos.y == i)
 			{
 				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "¢Â";
+				cout << "ï¿½ï¿½";
 			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
-				cout << "¡á";
+				cout << "ï¿½ï¿½";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-				cout << "¡Ú";
+				cout << "ï¿½ï¿½";
 			SetColor((int)COLOR::WHITE);
 		}
 		cout << "\n";
 	}
+	Gotoxy(MAP_WIDTH/1.5, MAP_HEIGHT + 2);
+	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
 }

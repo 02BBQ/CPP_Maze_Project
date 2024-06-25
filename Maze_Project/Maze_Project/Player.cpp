@@ -1,8 +1,19 @@
 #include "Player.h"
 
+Player::Player()
+{
+	tPos = { 0,0 };
+	tNewPos = tPos;
+	lastMoveTime = 0;
+}
+
 void Player::Move()
 {
-	//this->tNewPos = this->tNewPos + Dir
+	//this->tNewPos = this->tNewPos + Dirif ()
+	if ((clock() - lastMoveTime) < .1f) return;
+
+	lastMoveTime = clock();
+
 	tNewPos = tPos;
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
 		tNewPos = Raycast(tPos, {0, -1});
@@ -25,7 +36,6 @@ void Player::Move()
 	cout << tPos.y;*/
 
 	tPos = tNewPos;
-	Sleep(33);
 }
 
 FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
@@ -39,6 +49,10 @@ FLOAT2 Player::Raycast(FLOAT2 origin, FLOAT2 dir)
 			newPos = { newPos.x - dir.x, newPos.y - dir.y };
 			return newPos;
 		}
+		/*else if (MapManager::GetInst()->arrMap[newPos.y][newPos.x] == (char)OBJ_TYPE::DANGER) {
+			newPos = { newPos.x - dir.x, newPos.y - dir.y };
+			return newPos;
+		}*/
 		if (newPos.x == MAP_WIDTH || newPos.y == MAP_HEIGHT 
 			|| newPos.x == -1
 			|| newPos.y == -1) {

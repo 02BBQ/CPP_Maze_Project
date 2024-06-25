@@ -52,7 +52,7 @@ bool TitleScene()
 
 void InfoRender()
 {
-	cout << "[조작법 ]" << endl;
+	cout << "[조작법]" << endl;
 	//얘가 계속 출력
 	//되어있는 상태여야함.
 	//스페이스 눌리면 나가져.
