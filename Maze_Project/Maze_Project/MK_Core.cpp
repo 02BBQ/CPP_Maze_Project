@@ -22,7 +22,10 @@ void MK_Core::Run()
 
 		Update();
 		Gotoxy(0, 0);
-		Render();
+		if (gameOver == false)
+		{
+			Render();
+		}
 		//시간동기화
 		//FrameSync(60);
 	}
@@ -59,10 +62,34 @@ void MK_Core::Render()
 		cout << "\n";
 	}
 	GET_SINGLE(MapManager)->ObstacleRender();
+
+	if (player->tPos.y >= camera->bottomCam)
+		GameOver();
+}
+
+void MK_Core::GameStart()
+{
+	gameOver = false;
+}
+
+void MK_Core::GameOver()
+{
+	GET_SINGLE(MapManager)->GameOverRender();
+	gameOver = true;
 }
 
 void MK_Core::MoveMap()
 {
+	double time = 0;
+	time = this->gameTime->GetGameTime();
+	if (time > lastTime)
+	{
+		if (camera->topCam <= 0) return;
+		camera->topCam--;
+		camera->bottomCam--;
+		lastTime = this->gameTime->GetGameTime() + speed;
+	}
+
 	if (GetAsyncKeyState(VK_SHIFT))
 	{
 		if (camera->topCam <= 0) return;

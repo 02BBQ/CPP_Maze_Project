@@ -38,3 +38,8 @@ void MapManager::ObstacleRender()
 	}
 	SetColor((int)COLOR::WHITE);
 }
+
+void MapManager::GameOverRender()
+{
+	cout << "Game Over";
+}

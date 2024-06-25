@@ -8,15 +8,11 @@ class MK_Core
 {
 private:
     MK_Core();
-public:
-    Player* player;
-    Camera* camera;
-    GameTimer* gameTime;
-public:
-    bool Init();
-    void Run();
-    void Update();
-    void Render();
+    static MK_Core* m_pInst;
+
+    bool gameOver = false;
+    double lastTime = speed;
+
     void MoveMap();
 public:
     static MK_Core* GetInst() {
@@ -27,7 +23,18 @@ public:
     static void DestroyInst() {
         DESTROYER(m_pInst);
     }
-private:
-    static MK_Core* m_pInst;
+
+    Player* player;
+    Camera* camera;
+    GameTimer* gameTime;
+
+    double speed = 1;
+
+    bool Init();
+    void Run();
+    void Update();
+    void Render();
+    void GameStart();
+    void GameOver();
 };
 
