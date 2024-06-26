@@ -130,13 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="console.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="Core.cpp" />
-=======
-    <ClCompile Include="Core.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
->>>>>>> main
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Logic_bbq.cpp" />
     <ClCompile Include="main.cpp">
@@ -155,10 +149,6 @@
     <ClCompile Include="MK_GameLogic.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-<<<<<<< HEAD
-=======
-    <ClCompile Include="소스.cpp" />
->>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />

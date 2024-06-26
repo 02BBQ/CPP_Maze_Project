@@ -1,4 +1,4 @@
-#include "Core.h"6
+﻿#include "Core.h"
 Core* Core::m_pInst = nullptr;
 
 Core::Core()
@@ -63,7 +63,7 @@ void Core::Render()
 			if (player->tPos.x == j && player->tPos.y == i)
 			{
 				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "s";
+				cout << "※";
 			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
 			{
@@ -73,7 +73,7 @@ void Core::Render()
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-				cout << "g";
+				cout << "○";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL) {
 				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::LIGHT_YELLOW);
 				cout << "  ";
