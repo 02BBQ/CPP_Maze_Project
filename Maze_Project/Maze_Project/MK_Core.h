@@ -1,6 +1,7 @@
 #pragma once
 #include "define.h"
 #include "Camera.h"
+#include "MK_GameLogic.h"
 class Player;
 class Camera;
 class GameTimer;
@@ -11,10 +12,12 @@ private:
     MK_Core();
     static MK_Core* m_pInst;
 
+private:
     bool gameOver = false;
     double lastTime = speed;
 
     void MoveMap();
+
 public:
     static MK_Core* GetInst() {
         if (m_pInst == nullptr)
@@ -25,10 +28,12 @@ public:
         DESTROYER(m_pInst);
     }
 
+public:
     Player* player;
     Camera* camera;
     GameTimer* gameTime;
 
+    int score = 0;
     double speed = 1;
 
     bool Init();
@@ -37,7 +42,5 @@ public:
     void Render();
     void GameStart();
     void GameOver();
-
-    void DestoryObstacle();
 };
 

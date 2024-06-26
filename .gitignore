@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Maze_Project/Maze_Project/Maze_Project.vcxproj
+Maze_Project/Maze_Project/Maze_Project.vcxproj.filters

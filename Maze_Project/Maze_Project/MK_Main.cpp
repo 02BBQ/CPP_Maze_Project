@@ -12,8 +12,6 @@ int main()
 		return 0;
 	}
 
-	GET_SINGLE(MK_GameLogic)->Init();
-
 	if (!TitleScene()) {
 		return 0;
 	}

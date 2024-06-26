@@ -8,7 +8,8 @@ MK_GameLogic::MK_GameLogic()
 
 void MK_GameLogic::Init()
 {
-	system("title Maze | mode con cols=80 lines=40");
+	system("title Maze");
+	system("mode con: cols=80 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
 	SetFontSize(FW_BOLD, 20, 20);
@@ -26,8 +27,8 @@ void MK_GameLogic::Init()
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (GET_SINGLE(MapManager)->arrMap[i][j] == (char)OBJ_TYPE::START)
-				GET_SINGLE(Core)->player->tPos = { j,i };
-				//GET_SINGLE(MK_Core)->player->tPos = {j,i};
+				//GET_SINGLE(Core)->player->tPos = { j,i };
+				GET_SINGLE(MK_Core)->player->tPos = {j,i};
 		}
 	} 
 }

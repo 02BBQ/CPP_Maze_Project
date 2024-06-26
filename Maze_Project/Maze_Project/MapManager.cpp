@@ -43,3 +43,12 @@ void MapManager::GameOverRender()
 {
 	cout << "Game Over";
 }
+
+void MapManager::DestoryObstacle(int destory_pos_y)
+{
+	Gotoxy(0, destory_pos_y + 2);
+	for (int i = 0; i < MAP_WIDTH - 1; ++i)
+	{
+		cout << "  ";
+	}
+}

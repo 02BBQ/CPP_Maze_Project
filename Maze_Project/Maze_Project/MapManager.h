@@ -26,8 +26,11 @@ public:
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH] = {};
 
+	int obstacle_pos = 0;
+
 	void Init(std::string const MAP_FILE);
 	void ObstacleRender();
 	void GameOverRender();
+	void DestoryObstacle(int destory_pos_y);
 };
 
