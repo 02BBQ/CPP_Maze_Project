@@ -47,7 +47,7 @@ void Player::Move()
 	std::vector<FLOAT2> pathTiles = getLinePoints(tPos, tNewPos);
 	for (const auto& index : pathTiles) {
 		char* tile = &MapManager::GetInst()->arrMap[index.y][index.x];
-		if (*tile == (char)OBJ_TYPE::TRAIL || *tile == (char)OBJ_TYPE::TRAIL2) continue;
+		if (*tile != (char)OBJ_TYPE::TRAIL && *tile != (char)OBJ_TYPE::TRAIL2 && *tile != (char)OBJ_TYPE::ROAD) continue;
 		*tile = (char)OBJ_TYPE::TRAIL;
 		// 여기서 tile.x, tile.y를 사용하여 각 타일을 검사하거나 처리합니다.
 
