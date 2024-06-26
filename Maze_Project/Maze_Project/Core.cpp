@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "Core.h"6
 Core* Core::m_pInst = nullptr;
 
 Core::Core()
@@ -15,6 +15,17 @@ bool Core::Init()
 	timer = new GameTimer();
 	score = 0;
 	startTime = clock();
+
+	GET_SINGLE(MapManager)->Init("TestMap.txt");
+
+	for (int i = 0; i < MAP_HEIGHT; ++i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			if (GET_SINGLE(MapManager)->arrMap[i][j] == (char)OBJ_TYPE::START)
+				player->tPos = { j,i };
+		}
+	}
 
 	return true;
 }
@@ -52,14 +63,17 @@ void Core::Render()
 			if (player->tPos.x == j && player->tPos.y == i)
 			{
 				SetColor((int)COLOR::LIGHT_YELLOW);
-				cout << "��";
+				cout << "s";
 			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::WALL)
-				cout << "��";
+			{
+				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::BLUE);
+				cout << "  ";
+			}
 			else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-				cout << "��";
+				cout << "g";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL) {
 				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::LIGHT_YELLOW);
 				cout << "  ";
@@ -75,5 +89,5 @@ void Core::Render()
 	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
 	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
-	cout << "Score: " << timer->GetGameTime()/1000;
+	cout << "Score: " << timer->GetGameTime();
 }
