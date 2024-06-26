@@ -3,7 +3,7 @@
 #include "Core.h"
 
 const int MAP_WIDTH = 21;
-const int MAP_HEIGHT = 80;
+const int MAP_HEIGHT = 40;
 
 enum class OBJ_TYPE
 {

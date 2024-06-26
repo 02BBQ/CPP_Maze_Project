@@ -67,11 +67,15 @@ void MK_Core::Render()
 	}
 	GET_SINGLE(MapManager)->ObstacleRender();
 
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
+	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
+	// cout << "Score: " <<  gametime->GetGameTime() / 1000;
 	// Clean Up ObstacleRender
 	//DestoryObstacle();
 
 	// GameOver
-	//if (player->tPos.y >= camera->bottomCam + half_map_height) GameOver();
+	if (player->tPos.y >= camera->bottomCam + half_map_height) GameOver();
 }
 
 /// <summary>
