@@ -8,7 +8,7 @@ const int MAP_HEIGHT = 40;
 
 enum class OBJ_TYPE
 {
-	ROAD = '0', WALL, START, COIN,
+	ROAD = '0', WALL, START, COIN, TRAIL = (char)222, TRAIL2
 };
 
 class MapManager
