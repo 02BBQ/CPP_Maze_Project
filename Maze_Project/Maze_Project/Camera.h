@@ -3,6 +3,12 @@
 
 class Camera
 {
+private:
+	int threshold = 1;
+	int Lerp(int start, int end, float t);
+public:
+	void MoveCamera();
+	void CameraUpdate();
 public:
 	Camera()
 	{
