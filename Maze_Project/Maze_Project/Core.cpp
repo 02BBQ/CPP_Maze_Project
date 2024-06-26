@@ -15,7 +15,7 @@ bool Core::Init()
 	timer = new GameTimer();
 	score = 0;
 	startTime = clock();
-	
+
 	return true;
 }
 
@@ -23,11 +23,11 @@ void Core::Run()
 {
 	while (true)
 	{
-		
+
 		Update();
-		Gotoxy(0,0);
+		Gotoxy(0, 0);
 		Render();
-		//프레임 조정
+		//������ ����
 		//FrameSync(60);
 	}
 }
@@ -35,8 +35,8 @@ void Core::Run()
 void Core::Update()
 {
 	this->player->Move();
-	this->timer->Update();
-	
+	this->timer->StartWorldTime();
+	score += timer->deltaTime;
 }
 
 void Core::Render()
@@ -60,10 +60,20 @@ void Core::Render()
 				cout << "  ";
 			else if (arrMap[i][j] == (char)OBJ_TYPE::START)
 				cout << "��";
-			SetColor((int)COLOR::WHITE);
+			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL) {
+				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::LIGHT_YELLOW);
+				cout << "  ";
+			}
+			else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL2) {
+				SetColor((int)COLOR::MINT, (int)COLOR::MINT);
+				cout << "  ";
+			}
+			SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
 		}
 		cout << "\n";
 	}
-	Gotoxy(MAP_WIDTH/1.5, MAP_HEIGHT + 2);
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
+	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
+	cout << "Score: " << timer->currentTime/1000;
 }

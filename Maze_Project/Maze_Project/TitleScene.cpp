@@ -1,4 +1,4 @@
-ï»¿#include"TitleScene.h"
+#include"TitleScene.h"
 #include"define.h"
 #include<fcntl.h>
 #include<corecrt_io.h>
@@ -23,14 +23,14 @@ void TitleRender() {
 
 bool TitleScene()
 {
-	
-	
+
+
 	while (true)
 	{
 		/*deltaTime = clock() - oldTime;
 		double fps = (1.0 / deltaTime) * 1000;
 		oldTime = clock();*/
-		
+
 
 		system("cls");
 		TitleRender();
@@ -52,10 +52,10 @@ bool TitleScene()
 
 void InfoRender()
 {
-	cout << "[ì¡°ìž‘ë²•]" << endl;
-	//ì–˜ê°€ ê³„ì† ì¶œë ¥
-	//ë˜ì–´ìžˆëŠ” ìƒíƒœì—¬ì•¼í•¨.
-	//ìŠ¤íŽ˜ì´ìŠ¤ ëˆŒë¦¬ë©´ ë‚˜ê°€ì ¸.
+	cout << "[Á¶ÀÛ¹ý]" << endl;
+	//¾ê°¡ °è¼Ó Ãâ·Â
+	//µÇ¾îÀÖ´Â »óÅÂ¿©¾ßÇÔ.
+	//½ºÆäÀÌ½º ´­¸®¸é ³ª°¡Á®.
 	Sleep(100);
 	while (true) {
 		if (KeyController() == KEY::SPACE)
@@ -79,11 +79,11 @@ MENU MenuRender()
 	int top = y;
 	int bottom = y + 2;
 	Gotoxy(x, y);
-	cout << "ê²Œìž„ ì‹œìž‘";
+	cout << "°ÔÀÓ ½ÃÀÛ";
 	Gotoxy(x, y + 1);
-	cout << "ê²Œìž„ ì •ë³´";
+	cout << "°ÔÀÓ Á¤º¸";
 	Gotoxy(x, y + 2);
-	cout << "ê²Œìž„ ì¢…ë£Œ";
+	cout << "°ÔÀÓ Á¾·á";
 
 	Gotoxy(x - 2, y);
 	cout << halka[loop];
@@ -91,8 +91,8 @@ MENU MenuRender()
 	while (true) {
 		if (100 < clock() - oldTime) {
 			oldTime = clock();
-			++loop; 
-			if (loop > 3) 
+			++loop;
+			if (loop > 3)
 				loop = 0;
 		}
 		Gotoxy(x - 2, y);
