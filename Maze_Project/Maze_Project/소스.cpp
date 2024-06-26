@@ -1,4 +1,4 @@
-#include "Core.h"
+﻿#include "Core.h"
 Core* Core::m_pInst = nullptr;
 
 Core::Core()
@@ -75,5 +75,5 @@ void Core::Render()
 	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
 	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
-	cout << "Score: " << timer->GetGameTime()/1000;
+	cout << "Score: " << timer->GetGameTime() / 1000;
 }

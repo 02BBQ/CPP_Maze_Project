@@ -130,37 +130,42 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="console.cpp" />
-    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Logic_bbq.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main_bbq.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="mci.cpp" />
+    <ClCompile Include="MK_Core.cpp" />
     <ClCompile Include="MK_Main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="MK_Scene.cpp" />
     <ClCompile Include="MK_GameLogic.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="WorldTime.cpp" />
+    <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Logic_bbq.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="mci.h" />
+    <ClInclude Include="MK_Core.h" />
     <ClInclude Include="MK_Scene.h" />
     <ClInclude Include="MK_GameLogic.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="WorldTime.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
