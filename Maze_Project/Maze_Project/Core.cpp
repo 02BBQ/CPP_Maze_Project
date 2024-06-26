@@ -47,6 +47,7 @@ void Core::Update()
 {
 	this->player->Move();
 	this->timer->Update();
+	this->camera->CameraUpdate();
 	score += timer->GetDeltaTime();
 }
 
@@ -86,8 +87,8 @@ void Core::Render()
 		}
 		cout << "\n";
 	}
-	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 2);
+	Gotoxy(MAP_WIDTH / 1.5, 21);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
-	Gotoxy(MAP_WIDTH / 1.5, MAP_HEIGHT + 3);
+	Gotoxy(MAP_WIDTH / 1.5, 20);
 	cout << "Score: " << timer->GetGameTime();
 }
