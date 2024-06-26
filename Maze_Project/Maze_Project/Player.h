@@ -2,6 +2,8 @@
 #include<vector>
 #include "Logic_bbq.h"
 #include "define.h"
+#include<thread>
+#include<chrono>
 
 class Player
 {
