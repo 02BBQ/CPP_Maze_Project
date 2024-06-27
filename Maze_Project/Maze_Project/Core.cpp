@@ -10,6 +10,9 @@ Core::Core()
 }
 bool Core::Init()
 {
+	system("title Maze | mode con cols=80 lines=40");
+	SetCursorVis(false, 1);
+	LockResize();
 	if (player == nullptr) player = new Player();
 	if (camera == nullptr) camera = new Camera();
 	timer = new GameTimer();
