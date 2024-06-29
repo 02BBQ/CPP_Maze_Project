@@ -22,6 +22,7 @@ bool MK_Core::Init()
 void MK_Core::Run()
 {
 	gameTime = new GameTimer();
+	PlayBgm(TEXT("gamebgm.mp3"), 100);
 
 	while (true)
 	{
