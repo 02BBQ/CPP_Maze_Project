@@ -35,9 +35,9 @@ void GOInfoRender()
 }
 
 GOMENU MenuRender() {
-
+	return GOMENU::QUIT;
 }
 
 GOKEY KeyController() {
-
+	return GOKEY::_;
 }

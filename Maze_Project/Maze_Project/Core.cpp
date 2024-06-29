@@ -10,7 +10,7 @@ Core::Core()
 }
 bool Core::Init()
 {
-	system("title Maze | mode con cols=80 lines=40");
+	system("title Maze | mode con cols=140 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
 	if (player == nullptr) player = new Player();
@@ -19,7 +19,7 @@ bool Core::Init()
 	score = 0;
 	startTime = clock();
 
-	GET_SINGLE(MapManager)->Init("Test1.txt");
+	GET_SINGLE(MapManager)->Init("TestMap.txt");
 
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
@@ -35,6 +35,7 @@ bool Core::Init()
 
 void Core::Run()
 {
+	system("mode con cols=80 lines=40");
 	while (true)
 	{
 
@@ -56,12 +57,19 @@ void Core::Update()
 
 void Core::Render()
 {
+	Gotoxy(60,26);
+	cout << "Score: " << timer->GetGameTime();
 	auto arrMap = GET_SINGLE(MapManager)->arrMap;
+	Gotoxy(0, 6);
+	
 	for (int i = camera->topCam; i < camera->bottomCam; ++i)
 	{
-		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_) {
+		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH - 1; ++_) {
 			cout << " ";
 		}
+		SetColor((int)COLOR::LIGHT_VIOLET, (int)COLOR::LIGHT_VIOLET);
+		cout << "  ";
+		SetColor((int)COLOR::GREEN, (int)COLOR::BLACK);
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (player->tPos.x == j && player->tPos.y == i)
@@ -86,12 +94,17 @@ void Core::Render()
 				SetColor((int)COLOR::MINT, (int)COLOR::MINT);
 				cout << "  ";
 			}
+			else {
+				SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::BLUE);
+				cout << "  ";
+			}
 			SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
 		}
+		SetColor((int)COLOR::LIGHT_VIOLET, (int)COLOR::LIGHT_VIOLET);
+		cout << "  ";
+		SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
 		cout << "\n";
 	}
-	Gotoxy(MAP_WIDTH / 1.5, 21);
-	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
-	Gotoxy(MAP_WIDTH / 1.5, 20);
-	cout << "Score: " << timer->GetGameTime();
+	
 }
+ 

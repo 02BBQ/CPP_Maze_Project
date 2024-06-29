@@ -7,7 +7,7 @@ void GameOverRender();
 bool GameOverScene();
 void GOInfoRender();
 enum class GOMENU {
-	START, INFO, QUIT
+	START, QUIT
 };
 GOMENU MenuRender();
 enum class GOKEY {
