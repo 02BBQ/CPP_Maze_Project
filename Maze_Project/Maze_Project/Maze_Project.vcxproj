@@ -130,7 +130,9 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="console.cpp" />
-    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Logic_bbq.cpp" />
     <ClCompile Include="main.cpp">

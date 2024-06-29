@@ -5,6 +5,7 @@ MK_Core::MK_Core()
 {
 	player = new Player();
 	camera = new Camera();
+	camera->bottomCam = MAP_HEIGHT / 2;
 	score = 0;
 }
 
@@ -36,27 +37,24 @@ void MK_Core::Run()
 void MK_Core::Update()
 {
 	this->player->Move();
-	//MoveMap();
 	this->gameTime->Update();
+	this->camera->CameraUpdate();
 	score += gameTime->GetDeltaTime();
 }	
 
 void MK_Core::Render()
 {
-	// 이거 수정 해야함
-	// 맵 80이면 
-	// 2 나누기 안돼
-	// 40, 60 나온다.
-	// 이거 다른 방법 써야 함
-	// Start 문자는 제거 예정
-	auto arrMap = GET_SINGLE(MapManager)->arrMap;
-	int half_map_height = (MAP_HEIGHT / 2);
+	auto arrMap = GET_SINGLE(MapManager)->arrMap1;
+	auto arrMap2 = GET_SINGLE(MapManager)->arrMap2;
 
-	for (int i = camera->topCam + half_map_height; i < camera->bottomCam + half_map_height; ++i)
+	// 이러면 이것도 렌더링 하지 이거 카메라나 맵을 조금 바꿔야 함
+
+	for (int i = std::clamp(camera->topCam - 2, 0, 60); i < std::clamp(camera->bottomCam, -100, 80); ++i)
 	{
 		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_) {
 			cout << " ";
 		}
+
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			if (player->tPos.x == j && player->tPos.y == i)
@@ -86,18 +84,26 @@ void MK_Core::Render()
 		cout << "\n";
 	}
 
-	Gotoxy(GetConsoleResolution().X / 2 - MAP_WIDTH, half_map_height);
-	GET_SINGLE(MapManager)->ObstacleRender();
-
-	Gotoxy(GetConsoleResolution().X / 2 - MAP_WIDTH, half_map_height + 4);
+	Gotoxy(MAP_WIDTH / 1.5, 21);
+	cout << "topCam: " << std::clamp(camera->topCam - 2, 0, 100) << " " << "bottomCam: " << std::clamp(camera->bottomCam, 0, 40);
+	/*Gotoxy(MAP_WIDTH / 1.5, 21);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
-	cout << "Score: " << gameTime->GetGameTime();
+	Gotoxy(MAP_WIDTH / 1.5, 20);
+	cout << "Score: " << gameTime->GetGameTime();*/
+
+	/*Gotoxy(GetConsoleResolution().X / 2 - MAP_WIDTH, 21);
+	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
+	Gotoxy(GetConsoleResolution().X / 2 - MAP_WIDTH, 20);
+	cout << "Score: " << gameTime->GetGameTime();*/
+
+	/*Gotoxy(GetConsoleResolution().X / 2 - MAP_WIDTH, 21);
+	GET_SINGLE(MapManager)->ObstacleRender();*/
 
 	// Clean Up ObstacleRender
 	// DestoryObstacle();
 
 	// GameOver
-	if (player->tPos.y >= camera->bottomCam + half_map_height) GameOver();
+	//if (player->tPos.y >= camera->bottomCam) GameOver();
 }
 
 void MK_Core::GameStart()
@@ -109,18 +115,4 @@ void MK_Core::GameOver()
 {
 	GET_SINGLE(MapManager)->GameOverRender();
 	gameOver = true;
-}
-
-void MK_Core::MoveMap()
-{
-	double time = 0;
-	time = this->gameTime->GetGameTime();
-	if (time > lastTime)
-	{
-		if (camera->topCam <= -20) return;
-		// topcam은 플레이어가 위로 움직일때 실행
-		//camera->topCam--;
-		camera->bottomCam--;
-		lastTime = this->gameTime->GetGameTime() + speed;
-	}
 }

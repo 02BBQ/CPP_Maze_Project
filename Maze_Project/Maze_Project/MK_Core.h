@@ -16,8 +16,6 @@ private:
     bool gameOver = false;
     double lastTime = speed;
 
-    void MoveMap();
-
 public:
     static MK_Core* GetInst() {
         if (m_pInst == nullptr)

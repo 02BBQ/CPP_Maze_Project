@@ -6,9 +6,10 @@ MapManager::MapManager()
 {
 }
 
-void MapManager::Init(std::string const MAP_FILE)
+void MapManager::Init(std::string const MAP_FILE, char arrMap[MAP_HEIGHT][MAP_WIDTH])
 {
 	std::ios_base::sync_with_stdio(false);
+	cout.tie();
 
 	// Loading Map
 	std::fstream readMap(MAP_FILE);
