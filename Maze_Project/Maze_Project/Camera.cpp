@@ -3,7 +3,11 @@
 
 void Camera::MoveCamera()
 {
-	
+    Player* player = GET_SINGLE(Core)->player;
+    int cameraY = player->tPos.y;
+
+    topCam = max(0, cameraY - 10);
+    bottomCam = min(MAP_HEIGHT, cameraY + 10);
 }
 
 void Camera::CameraUpdate()
@@ -19,12 +23,12 @@ void Camera::CameraUpdate()
     }
 
     topCam = max(0, cameraY - 10);
-    bottomCam = min(MAP_HEIGHT, cameraY + 10);
-    if (cameraY - 10 < 0) {
+    bottomCam = cameraY + 10;//min(MAP_HEIGHT, cameraY + 10);
+    /*if (cameraY - 10 < 0) {
         bottomCam = cameraY + 10 - (cameraY - 10);
-    }
+    }*/
 }
 
 int Camera::Lerp(int start, int end, float t) {
-	return (int)(start + .16 * (end - start));
+	return (int)(start + t * (end - start));
 }
