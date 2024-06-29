@@ -26,6 +26,29 @@ void MapManager::Init(std::string const MAP_FILE, char arrMap[MAP_HEIGHT][MAP_WI
 	readMap.close();
 }
 
+void MapManager::AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH + 1])
+{
+	for (int i = MAP_HEIGHT - 1; i >= SECTION_HEIGHT; --i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			arrMap[i][j] = arrMap[i - SECTION_HEIGHT][j];
+		}
+		//arrMap[i][MAP_WIDTH] = '\0';  // Null-terminate each row
+	}
+
+	// 새로운 섹션을 맨 위에 추가
+	for (int i = 0; i < SECTION_HEIGHT; ++i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			arrMap[i][j] = section[i][j];
+		}
+		//arrMap[i][MAP_WIDTH] = '\0';  // Null-terminate each row
+	}
+}
+
+
 void MapManager::ObstacleRender()
 {
 	for (int i = 0; i < 2; ++i)
