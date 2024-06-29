@@ -1,7 +1,6 @@
 #include"TitleScene.h"
-#include"define.h"
-#include<fcntl.h>
-#include<corecrt_io.h>
+
+
 
 char halka[4] = { '|', '/', '-', '\\' };
 int loop;

@@ -1,4 +1,8 @@
 ﻿#pragma once
+#include<fcntl.h>
+#include<corecrt_io.h>
+#include"define.h"
+
 void TitleRender();
 bool TitleScene();
 void InfoRender();

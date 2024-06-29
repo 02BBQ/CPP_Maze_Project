@@ -19,7 +19,7 @@ bool Core::Init()
 	score = 0;
 	startTime = clock();
 
-	GET_SINGLE(MapManager)->Init("TestMap.txt");
+	GET_SINGLE(MapManager)->Init("Test1.txt");
 
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
