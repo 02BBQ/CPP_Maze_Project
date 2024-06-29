@@ -3,24 +3,23 @@
 #include "console.h"
 //#include "MK_GameLogic.h"
 #include "TitleScene.h"
+#include "GameOver.h"
+int main() {                             
+	std::ios_base::sync_with_stdio(0);
+	std::cout.tie(NULL);
 
-void Init() {
-	system("title 21Bombman | mode con cols=80 lines=40");
-	SetCursorVis(false, 1);
-	LockResize();
-}
+	do {
+		if (!Core::GetInst()->Init()) {
+			cout << "Game Init Error" << endl;
+			Core::DestroyInst();
+			return 0;
+		}
+		if (!TitleScene()) {
+			return 0;
+		}
 
-int main() {                                                      
-	if (!Core::GetInst()->Init()) {
-		cout << "Game Init Error" << endl;
-		Core::DestroyInst();
-		return 0;
-	}
-	Init();
-	if (!TitleScene()) {
-		return 0;
-	}
+		GET_SINGLE(Core)->Run();
+	} while (GameOverScene());
 
-	GET_SINGLE(Core)->Run();
 	return 0;
 }

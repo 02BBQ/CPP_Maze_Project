@@ -19,5 +19,6 @@ public:
 	double GetGameTime();
 	void Update();
 	double GetDeltaTime();
+	void Init();
 };
 

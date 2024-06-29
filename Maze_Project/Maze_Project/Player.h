@@ -10,6 +10,7 @@ class Player
 private:
 	float lastMoveTime;
 public:
+	bool isDead;
 	FLOAT2 tPos;
 	FLOAT2 tNewPos;
 public:
