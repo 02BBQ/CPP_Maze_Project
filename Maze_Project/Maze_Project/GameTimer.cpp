@@ -33,3 +33,14 @@ double GameTimer::GetDeltaTime()
 {
     return deltaTime;
 }
+
+void GameTimer::Init()
+{
+    endTime = 0;
+
+    currentTime = 0;
+    lastTime = 0;
+    periodFrequency = 0;
+    timeScale = 0;
+    deltaTime = 0;
+}

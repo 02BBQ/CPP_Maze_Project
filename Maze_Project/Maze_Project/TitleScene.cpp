@@ -2,8 +2,7 @@
 
 
 
-char halka[4] = { '|', '/', '-', '\\' };
-int loop;
+
 
 void TitleRender() {
 	system("mode con cols=140 lines=40");
@@ -21,7 +20,7 @@ void TitleRender() {
 	wcout << L"\t\t	██║   ██║██╔████╔██║██║██╔██╗ ██║██║  ███╗╚████╔╝ ██║   ██║    ██╔████╔██║███████║  ███╔╝ █████╗  " << endl;
 	wcout << L"\t\t	██║   ██║██║╚██╔╝██║██║██║╚██╗██║██║   ██║ ╚██╔╝  ██║   ██║    ██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝  " << endl;
 	wcout << L"\t\t	╚██████╔╝██║ ╚═╝ ██║██║██║ ╚████║╚██████╔╝  ██║   ╚██████╔╝    ██║ ╚═╝ ██║██║  ██║███████╗███████╗" << endl;
-	wcout << L"\t\t	╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝   ╚═╝    ╚═════╝     ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ " << endl;
+	wcout << L"\t\t	 ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝   ╚═╝    ╚═════╝     ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ " << endl;
 
 
 	int curMode = _setmode(_fileno(stdout), beforemode);
@@ -81,6 +80,8 @@ void InfoRender()
 
 MENU MenuRender()
 {
+	char halka[4] = { '|', '/', '-', '\\' };
+	int loop;
 	double deltaTime, oldTime = clock();
 	loop = 0;
 

@@ -13,9 +13,25 @@ bool Core::Init()
 	system("title Maze | mode con cols=140 lines=40");
 	SetCursorVis(false, 1);
 	LockResize();
+
+	if (player != nullptr)
+	{
+		delete player;
+		player = nullptr;
+	}
+	if (camera != nullptr)
+	{
+		delete camera;
+		camera = nullptr;
+	}
+
 	if (player == nullptr) player = new Player();
 	if (camera == nullptr) camera = new Camera();
-	timer = new GameTimer();
+	if (timer == nullptr)
+		timer = new GameTimer();
+	else
+		timer->Init();
+
 	score = 0;
 	startTime = clock();
 
@@ -36,7 +52,7 @@ bool Core::Init()
 void Core::Run()
 {
 	system("mode con cols=80 lines=40");
-	while (true)
+	while (!player->isDead)
 	{
 
 		Update();
