@@ -45,11 +45,6 @@ void MK_Core::Update()
 
 void MK_Core::Render()
 {
-	auto arrMap = GET_SINGLE(MapManager)->arrMap1;
-	auto arrMap2 = GET_SINGLE(MapManager)->arrMap2;
-
-	// 이러면 이것도 렌더링 하지 이거 카메라나 맵을 조금 바꿔야 함
-
 	for (int i = std::clamp(camera->topCam - 2, 0, 60); i < std::clamp(camera->bottomCam, -100, 80); ++i)
 	{
 		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_) {

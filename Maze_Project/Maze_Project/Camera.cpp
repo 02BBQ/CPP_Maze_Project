@@ -19,7 +19,7 @@ void Camera::CameraUpdate()
     const int threshold = 3;
 
     if (abs(diff) >= threshold) {
-        cameraY = Lerp(cameraY, player->tPos.y, 0.1f); // 보간 계수 0.1 사용
+        cameraY = player->tPos.y;//Lerp(cameraY, player->tPos.y, 0.1f); // 보간 계수 0.1 사용
     }
 
     topCam = max(0, cameraY - 10);

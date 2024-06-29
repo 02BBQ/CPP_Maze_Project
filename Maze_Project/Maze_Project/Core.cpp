@@ -52,6 +52,7 @@ bool Core::Init()
 
 void Core::Run()
 {
+    PlayBgm(TEXT("gamebgm.mp3"), 100);
     system("mode con cols=80 lines=40");
     while (!player->isDead)
     {
@@ -118,4 +119,5 @@ void Core::Render()
         SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
         std::cout << "\n";
     }
+
 }

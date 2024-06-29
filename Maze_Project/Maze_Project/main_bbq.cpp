@@ -1,9 +1,9 @@
 //#include "Core.h"
 #include "define.h"
+#include "GameOver.h"
 #include "console.h"
 //#include "MK_GameLogic.h"
 #include "TitleScene.h"
-#include "GameOver.h"
 int main() {                             
 	std::ios_base::sync_with_stdio(0);
 	std::cout.tie(NULL);
@@ -19,7 +19,7 @@ int main() {
 		}
 
 		GET_SINGLE(Core)->Run();
-	} while (GameOverScene());
+	}while (GameOverScene());
 
 	return 0;
 }

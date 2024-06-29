@@ -6,7 +6,7 @@ MapManager::MapManager()
 {
 }
 
-void MapManager::Init(std::string const MAP_FILE, char arrMap[MAP_HEIGHT][MAP_WIDTH])
+void MapManager::Init(std::string const MAP_FILE)
 {
 	std::ios_base::sync_with_stdio(false);
 	cout.tie();
