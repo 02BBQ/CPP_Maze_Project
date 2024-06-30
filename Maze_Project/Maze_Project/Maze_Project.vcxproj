@@ -119,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,24 +137,11 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Logic_bbq.cpp" />
-    <ClCompile Include="main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="main_bbq.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="mci.cpp" />
-    <ClCompile Include="MK_Core.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="MK_Main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="MK_Scene.cpp" />
-    <ClCompile Include="MK_GameLogic.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
@@ -167,17 +155,11 @@
     <ClInclude Include="Logic_bbq.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="mci.h" />
-    <ClInclude Include="MK_Core.h" />
-    <ClInclude Include="MK_Scene.h" />
-    <ClInclude Include="MK_GameLogic.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="123.txt" />
-    <Text Include="stage.txt" />
     <Text Include="TestMap.txt" />
-    <Text Include="TestStageMap.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

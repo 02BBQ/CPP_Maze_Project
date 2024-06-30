@@ -100,8 +100,6 @@ void Core::Render()
             }
             else if (arrMap[i][j] == (char)OBJ_TYPE::ROAD)
                 std::cout << "  ";
-            else if (arrMap[i][j] == (char)OBJ_TYPE::START)
-                std::cout << "○";
             else if (arrMap[i][j] == (char)OBJ_TYPE::TRAIL)
             {
                 SetColor((int)COLOR::LIGHT_YELLOW, (int)COLOR::LIGHT_YELLOW);
@@ -114,8 +112,6 @@ void Core::Render()
             }
             SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
         }
-        /*SetColor((int)COLOR::LIGHT_VIOLET, (int)COLOR::LIGHT_VIOLET);
-        std::cout << "  ";*/
         SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
         std::cout << "\n";
     }

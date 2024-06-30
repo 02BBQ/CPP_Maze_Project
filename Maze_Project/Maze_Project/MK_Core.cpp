@@ -81,7 +81,7 @@ void MK_Core::Render()
 	}
 
 	Gotoxy(MAP_WIDTH / 1.5, 21);
-	cout << "topCam: " << std::clamp(camera->topCam - 2, 0, 100) << " " << "bottomCam: " << std::clamp(camera->bottomCam, 0, 40);
+	//cout << "topCam: " << std::clamp(camera->topCam - 2, 0, 100) << " " << "bottomCam: " << std::clamp(camera->bottomCam, 0, 40);
 	/*Gotoxy(MAP_WIDTH / 1.5, 21);
 	cout << "PlayerPos: " << player->tPos.x << ", " << player->tPos.y << "\t\t";
 	Gotoxy(MAP_WIDTH / 1.5, 20);
