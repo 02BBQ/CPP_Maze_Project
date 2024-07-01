@@ -13,12 +13,15 @@ public:
     Camera* camera;
     GameTimer* timer;
     int score = 0;
-    int startTime;
+    double time = 0;
+    int delete_cam_count = 0;
+    bool obstacle_render = true;
 public:
     bool Init();
     void Run();
     void Update();
     void Render();
+    void ObsTime();
 public:
     static Core* GetInst() {
         if (m_pInst == nullptr)

@@ -6,7 +6,9 @@ Core::Core()
     player = new Player();
     camera = new Camera();
     score = 0;
-    startTime = 0;
+    time = 0;
+    delete_cam_count = 0;
+    obstacle_render = true;
 }
 
 bool Core::Init()
@@ -34,7 +36,7 @@ bool Core::Init()
         timer->Init();
 
     score = 0;
-    startTime = clock();
+    GET_SINGLE(MapManager)->obstacle_pos = 26;
 
     GET_SINGLE(MapManager)->Init("TestMap.txt");
 
@@ -68,16 +70,15 @@ void Core::Update()
     this->timer->Update();
     this->camera->CameraUpdate();
     score += timer->GetDeltaTime();
+    ObsTime();
 }
 
 void Core::Render()
 {
-    Gotoxy(60, 26);
-    std::cout << "Score: " << timer->GetGameTime();
     auto arrMap = GET_SINGLE(MapManager)->arrMap;
     Gotoxy(0, 6);
 
-    for (int i = camera->topCam; i < camera->bottomCam; ++i)
+    for (int i = camera->topCam; i < camera->bottomCam - delete_cam_count; ++i)
     {
         for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_)
         {
@@ -112,8 +113,42 @@ void Core::Render()
             }
             SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
         }
+
         SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
         std::cout << "\n";
     }
+    
+    if (obstacle_render)
+    {
+        GET_SINGLE(MapManager)->ObstacleRender();
+    }
+    
+    /*Gotoxy(70, 22);
+    std::cout << "Score: " << timer->GetGameTime() << "pos: " << player->tPos.y << endl
+        << "b: " << camera->bottomCam;*/
 
+}
+
+void Core::ObsTime()
+{
+    // 이거 한번만 해야돼 ㅇㅋ 넌 알거야 자고 일어난 나
+    if (abs(camera->bottomCam - player->tPos.y) >= 10)
+    {
+        obstacle_render = false;
+        GET_SINGLE(MapManager)->obstacle_pos = 26;
+        GET_SINGLE(MapManager)->DestoryObstacle(26);
+    }
+    else
+    {
+        obstacle_render = true;
+        time += timer->GetDeltaTime();
+        if (time >= 2.3)
+        {
+            delete_cam_count++;
+            int* tpos = &GET_SINGLE(MapManager)->obstacle_pos;
+            (*tpos)--;
+            GET_SINGLE(MapManager)->DestoryObstacle(*tpos);
+            time = 0;
+        }
+    }
 }

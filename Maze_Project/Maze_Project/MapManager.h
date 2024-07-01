@@ -5,7 +5,7 @@
 const int MAP_WIDTH = 21;
 const int MAP_HEIGHT = 80;
 
-const int SECTION_HEIGHT = 41;
+const int SECTION_HEIGHT = 40;
 const int SECTION_WIDTH = 21;
 
 enum class OBJ_TYPE
@@ -31,7 +31,7 @@ public:
 
 	int obstacle_pos = 0;
 
-	void AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH + 1]);
+	void AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH]);
 	void Init(std::string const MAP_FILE);
 	void ObstacleRender();
 	void GameOverRender();

@@ -26,7 +26,7 @@ void MapManager::Init(std::string const MAP_FILE)
 	readMap.close();
 }
 
-void MapManager::AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH + 1])
+void MapManager::AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH])
 {
 	for (int i = MAP_HEIGHT - 1; i >= SECTION_HEIGHT; --i)
 	{
@@ -51,8 +51,13 @@ void MapManager::AddSection(const char section[SECTION_HEIGHT][SECTION_WIDTH + 1
 
 void MapManager::ObstacleRender()
 {
+	Gotoxy(0, obstacle_pos);
 	for (int i = 0; i < 2; ++i)
 	{
+		for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_)
+		{
+			std::cout << " ";
+		}
 		for (int j = 0; j < MAP_WIDTH - 1; ++j)
 		{
 			SetColor((int)COLOR::RED);
@@ -71,6 +76,10 @@ void MapManager::GameOverRender()
 void MapManager::DestoryObstacle(int destory_pos_y)
 {
 	Gotoxy(0, destory_pos_y + 2);
+	for (int _ = 0; _ < (GetConsoleResolution().X) / 2 - MAP_WIDTH; ++_)
+	{
+		std::cout << " ";
+	}
 	for (int i = 0; i < MAP_WIDTH - 1; ++i)
 	{
 		cout << "  ";
