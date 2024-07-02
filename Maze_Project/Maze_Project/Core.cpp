@@ -128,8 +128,7 @@ void Core::Render()
     }
 
     Gotoxy(79, 22);
-    cout << GET_SINGLE(MapManager)->obstacle_pos << " " << player->tPos.y;
-    //std::cout << "Score: " << timer->GetGameTime();
+    std::cout << "Score: " << timer->GetGameTime();
 }
 
 void Core::ObsTime()
@@ -141,7 +140,7 @@ void Core::ObsTime()
 
     obstacle_render = true;
     time += timer->GetDeltaTime();
-    if (time >= 0.2)
+    if (time >= 0.13)
     {
         GET_SINGLE(MapManager)->obstacle_Wpos--;
         int* tpos = &GET_SINGLE(MapManager)->obstacle_pos;
