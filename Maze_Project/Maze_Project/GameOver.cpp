@@ -22,8 +22,6 @@ void GameOverRender() {
 
 bool GameOverScene()
 {
-
-
 	while (true)
 	{
 		system("cls");

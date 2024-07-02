@@ -11,6 +11,7 @@ private:
 	float lastMoveTime;
 public:
 	bool isDead;
+	int p_obstacle_pos = 16;
 	FLOAT2 tPos;
 	FLOAT2 tNewPos;
 public:

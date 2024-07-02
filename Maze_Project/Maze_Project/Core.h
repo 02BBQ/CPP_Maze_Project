@@ -22,6 +22,7 @@ public:
     void Update();
     void Render();
     void ObsTime();
+    void ResetObsRender();
 public:
     static Core* GetInst() {
         if (m_pInst == nullptr)

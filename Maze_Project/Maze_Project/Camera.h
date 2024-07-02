@@ -12,14 +12,12 @@ public:
 public:
 	Camera()
 	{
-		//cout << MAP_HEIGHT;
-		//topCam = (MAP_HEIGHT / 2);
-		//bottomCam = 20 + (MAP_HEIGHT / 2);
-
 		topCam = 0;
 		bottomCam = 20;
+		is_move_cam = false;
 	}
 
 	int topCam;
 	int bottomCam;
+	bool is_move_cam = false;
 };

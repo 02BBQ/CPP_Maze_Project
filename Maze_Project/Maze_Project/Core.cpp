@@ -5,10 +5,6 @@ Core::Core()
 {
     player = new Player();
     camera = new Camera();
-    score = 0;
-    time = 0;
-    delete_cam_count = 0;
-    obstacle_render = true;
 }
 
 bool Core::Init()
@@ -34,6 +30,11 @@ bool Core::Init()
         timer = new GameTimer();
     else
         timer->Init();
+
+    score = 0;
+    delete_cam_count = 0;
+    obstacle_render = true;
+    camera->is_move_cam = false;
 
     score = 0;
     GET_SINGLE(MapManager)->obstacle_pos = 26;
@@ -84,8 +85,6 @@ void Core::Render()
         {
             std::cout << " ";
         }
-        /*SetColor((int)COLOR::LIGHT_VIOLET, (int)COLOR::LIGHT_VIOLET);
-        std::cout << "  ";*/
         SetColor((int)COLOR::GREEN, (int)COLOR::BLACK);
         for (int j = 0; j < MAP_WIDTH; ++j)
         {
@@ -118,37 +117,50 @@ void Core::Render()
         std::cout << "\n";
     }
     
-    if (obstacle_render)
+    if (obstacle_render && GET_SINGLE(MapManager)->obstacle_Wpos <= 0)
     {
         GET_SINGLE(MapManager)->ObstacleRender();
     }
     
-    /*Gotoxy(70, 22);
-    std::cout << "Score: " << timer->GetGameTime() << "pos: " << player->tPos.y << endl
-        << "b: " << camera->bottomCam;*/
+    if (player->p_obstacle_pos == GET_SINGLE(MapManager)->obstacle_pos)
+    {
+        player->isDead = true;
+    }
 
+    Gotoxy(79, 22);
+    cout << GET_SINGLE(MapManager)->obstacle_pos << " " << player->tPos.y;
+    //std::cout << "Score: " << timer->GetGameTime();
 }
 
 void Core::ObsTime()
 {
-    // 이거 한번만 해야돼 ㅇㅋ 넌 알거야 자고 일어난 나
-    if (abs(camera->bottomCam - player->tPos.y) >= 10)
+    if (camera->is_move_cam)
     {
-        obstacle_render = false;
-        GET_SINGLE(MapManager)->obstacle_pos = 26;
-        GET_SINGLE(MapManager)->DestoryObstacle(26);
+        ResetObsRender();
     }
-    else
+
+    obstacle_render = true;
+    time += timer->GetDeltaTime();
+    if (time >= 0.2)
     {
-        obstacle_render = true;
-        time += timer->GetDeltaTime();
-        if (time >= 2.3)
+        GET_SINGLE(MapManager)->obstacle_Wpos--;
+        int* tpos = &GET_SINGLE(MapManager)->obstacle_pos;
+        if (GET_SINGLE(MapManager)->obstacle_Wpos <= 0)
         {
             delete_cam_count++;
-            int* tpos = &GET_SINGLE(MapManager)->obstacle_pos;
             (*tpos)--;
             GET_SINGLE(MapManager)->DestoryObstacle(*tpos);
-            time = 0;
         }
+
+        time = 0;
     }
+}
+
+void Core::ResetObsRender()
+{
+    obstacle_render = false;
+    delete_cam_count = 0;
+    GET_SINGLE(MapManager)->obstacle_pos = 26;
+    GET_SINGLE(MapManager)->DestoryObstacle(25);
+    camera->is_move_cam = false;
 }
