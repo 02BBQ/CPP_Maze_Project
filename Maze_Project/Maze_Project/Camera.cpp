@@ -25,7 +25,7 @@ void Camera::CameraUpdate()
     }
 
     topCam = max(0, cameraY - 10);
-    bottomCam =min(MAP_HEIGHT, cameraY + 10); //cameraY + 10;
+    bottomCam = min(MAP_HEIGHT, cameraY + 10); //cameraY + 10;
     /*if (cameraY - 10 < 0) {
         bottomCam = cameraY + 10 - (cameraY - 10);
     }*/

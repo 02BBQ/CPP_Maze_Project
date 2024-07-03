@@ -35,6 +35,7 @@ bool Core::Init()
     delete_cam_count = 0;
     obstacle_render = true;
     camera->is_move_cam = false;
+    ResetObsRender();
 
     score = 0;
     GET_SINGLE(MapManager)->obstacle_pos = 26;

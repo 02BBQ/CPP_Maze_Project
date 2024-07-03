@@ -31,6 +31,7 @@ bool GameOverScene()
 		switch (goMenu)
 		{
 		case MENU::GOTO_TITLE:
+			GET_SINGLE(Core)->DestroyInst();
 			return true;
 		case MENU::QUIT:
 			return false;
