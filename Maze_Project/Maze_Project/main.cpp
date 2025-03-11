@@ -2,10 +2,10 @@
 #include "define.h"
 
 int main() {
-	int fuck = clock();
+	int nice = clock();
 	while (true) {
 		int dt = 1.0/(clock() - fuck);
-		fuck = clock();
+		nice = clock();
 	}
 
 	return 0;
